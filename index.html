@@ -9,7 +9,7 @@
   <title>CV Studio - محرر السير الذاتية الاحترافي</title>
   
   <!-- الخطوط -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
@@ -34,7 +34,7 @@
       --text-secondary: #4B5563;
       
       /* الخطوط */
-      --font-family: 'Inter', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-family: 'Cairo', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-size-xs: 0.75rem;
       --font-size-sm: 0.875rem;
       --font-size-base: 1rem;
@@ -93,6 +93,8 @@
       background-color: var(--background);
       overflow-x: hidden;
       font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* ============================================
@@ -197,6 +199,7 @@
       white-space: nowrap;
       position: relative;
       overflow: hidden;
+      font-family: var(--font-family);
     }
 
     .btn::before {
@@ -440,6 +443,7 @@
       display: flex;
       align-items: center;
       gap: var(--spacing-sm);
+      font-family: var(--font-family);
     }
 
     .lang-toggle:hover {
@@ -754,6 +758,7 @@
       font-weight: 700;
       margin-bottom: var(--spacing-sm);
       background: linear-gradient(135deg, var(--accent) 0%, white 100%);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -803,6 +808,7 @@
     input[type="password"],
     input[type="tel"],
     input[type="date"],
+    input[type="month"],
     input[type="url"],
     textarea,
     select {
@@ -821,6 +827,7 @@
     input[type="password"]:focus,
     input[type="tel"]:focus,
     input[type="date"]:focus,
+    input[type="month"]:focus,
     input[type="url"]:focus,
     textarea:focus,
     select:focus {
@@ -1167,31 +1174,39 @@
        تصميم السيرة الذاتية - احترافي ومتعدد القوالب
        ============================================ */
 
-    .resume-template {
+    .resume-container {
       background: white;
-      padding: var(--spacing-3xl);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-md);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      border: 1px solid var(--border);
-      max-width: 210mm;
+      padding: var(--spacing-xl);
       margin: 0 auto;
-      transition: all 0.3s ease;
+      max-width: 210mm;
+      min-height: 297mm;
+      position: relative;
     }
 
-    /* قالب ATS بسيط */
+    .resume-template {
+      width: 100%;
+      height: 100%;
+      font-size: 11pt;
+      line-height: 1.4;
+      color: #333;
+      font-family: 'Cairo', 'Times New Roman', serif;
+    }
+
+    /* قالب ATS بسيط - محسّن للتصدير */
     .resume-template.ats-simple {
-      padding: var(--spacing-xl);
+      padding: 20mm;
       font-family: 'Times New Roman', serif;
-      font-size: 12pt;
+      font-size: 11pt;
+      line-height: 1.4;
     }
 
     .resume-template.ats-simple .resume-header {
-      text-align: left;
-      border-bottom: 1px solid #000;
-      padding-bottom: var(--spacing-md);
-      margin-bottom: var(--spacing-lg);
+      text-align: center;
+      margin-bottom: 20pt;
+      padding-bottom: 10pt;
+      border-bottom: 1px solid #333;
     }
 
     .resume-template.ats-simple .resume-name {
@@ -1199,18 +1214,26 @@
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 10pt;
+      color: #000;
     }
 
     .resume-template.ats-simple .resume-contact {
       display: block;
       font-size: 10pt;
-      line-height: 1.4;
+      line-height: 1.6;
+      text-align: center;
     }
 
     .resume-template.ats-simple .contact-item {
-      display: inline;
-      margin-left: 1rem;
+      display: inline-block;
+      margin: 0 10pt;
+      color: #333;
+    }
+
+    .resume-template.ats-simple .resume-section {
+      margin-bottom: 15pt;
+      page-break-inside: avoid;
     }
 
     .resume-template.ats-simple .resume-section-title {
@@ -1218,191 +1241,269 @@
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 1px;
+      margin-bottom: 8pt;
+      color: #000;
       border-bottom: none;
       padding: 0;
-      margin-bottom: 0.5rem;
-      margin-top: 1rem;
     }
 
     .resume-template.ats-simple .resume-entry {
-      margin-bottom: 0.5rem;
+      margin-bottom: 10pt;
+      page-break-inside: avoid;
     }
 
     .resume-template.ats-simple .resume-entry-header {
-      display: block;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4pt;
     }
 
     .resume-template.ats-simple .resume-entry-title {
       font-weight: bold;
-      display: inline;
+      font-size: 11pt;
+      color: #000;
     }
 
     .resume-template.ats-simple .resume-entry-date {
-      float: left;
       font-style: italic;
+      font-size: 10pt;
+      color: #333;
     }
 
     .resume-template.ats-simple .resume-entry-subtitle {
       font-style: italic;
+      font-size: 10pt;
+      margin-bottom: 4pt;
+      color: #333;
+    }
+
+    .resume-template.ats-simple .resume-entry-description {
+      font-size: 10pt;
+      line-height: 1.4;
+      color: #333;
+      text-align: justify;
+    }
+
+    .resume-template.ats-simple .resume-skills {
       display: block;
     }
 
-    /* قالب احترافي حديث */
+    .resume-template.ats-simple .skill-tag {
+      display: inline;
+      margin: 0 5pt;
+      font-size: 10pt;
+      color: #333;
+    }
+
+    /* قالب احترافي حديث - محسّن */
     .resume-template.modern {
       background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%);
+      padding: 30mm 25mm;
     }
 
     .resume-template.modern .resume-header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
-      padding: var(--spacing-2xl);
-      margin: calc(-1 * var(--spacing-3xl)) calc(-1 * var(--spacing-3xl)) var(--spacing-2xl);
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      padding: 25mm;
+      margin: -30mm -25mm 25mm -25mm;
       text-align: center;
     }
 
     .resume-template.modern .resume-name {
       color: white;
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      font-size: 24pt;
+      font-weight: 700;
+      margin-bottom: 10pt;
+      text-shadow: none;
     }
 
     .resume-template.modern .resume-contact {
       display: flex;
       justify-content: center;
-      gap: var(--spacing-lg);
+      gap: 15pt;
       flex-wrap: wrap;
-      margin-top: var(--spacing-md);
+      margin-top: 15pt;
     }
 
     .resume-template.modern .contact-item {
       background: rgba(255, 255, 255, 0.1);
-      padding: var(--spacing-xs) var(--spacing-md);
-      border-radius: var(--radius-lg);
-      backdrop-filter: blur(10px);
+      padding: 5pt 10pt;
+      border-radius: 20pt;
+      color: white;
+      font-size: 10pt;
+    }
+
+    .resume-template.modern .resume-section {
+      margin-bottom: 20pt;
+      page-break-inside: avoid;
     }
 
     .resume-template.modern .resume-section-title {
       color: var(--primary);
-      font-size: 1.5rem;
-      border-bottom: 3px solid var(--accent);
-      padding-bottom: var(--spacing-sm);
-      margin-bottom: var(--spacing-lg);
-      position: relative;
+      font-size: 14pt;
+      font-weight: 700;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 5pt;
+      margin-bottom: 15pt;
     }
 
-    .resume-template.modern .resume-section-title::before {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      right: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--accent);
+    .resume-template.modern .resume-entry {
+      margin-bottom: 15pt;
+      page-break-inside: avoid;
     }
 
-    /* قالب إبداعي */
-    .resume-template.creative {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
+    .resume-template.modern .resume-entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 5pt;
     }
 
-    .resume-template.creative .resume-header {
-      text-align: center;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: var(--spacing-xl);
-      margin-bottom: var(--spacing-xl);
+    .resume-template.modern .resume-entry-title {
+      font-weight: 600;
+      font-size: 12pt;
+      color: #000;
     }
 
-    .resume-template.creative .resume-name {
-      font-size: 3rem;
-      font-weight: 300;
-      letter-spacing: 3px;
-      margin-bottom: var(--spacing-md);
+    .resume-template.modern .resume-entry-date {
+      font-weight: 500;
+      font-size: 10pt;
+      color: var(--primary);
     }
 
-    .resume-template.creative .resume-contact {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-md);
-      margin-top: var(--spacing-lg);
+    .resume-template.modern .resume-entry-subtitle {
+      font-weight: 500;
+      font-size: 11pt;
+      color: var(--text-secondary);
+      margin-bottom: 5pt;
     }
 
-    .resume-template.creative .contact-item {
-      background: rgba(255, 255, 255, 0.1);
-      padding: var(--spacing-sm);
-      border-radius: var(--radius-md);
-      text-align: center;
-      backdrop-filter: blur(10px);
+    .resume-template.modern .resume-entry-description {
+      font-size: 10pt;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      text-align: justify;
     }
 
-    .resume-template.creative .resume-section-title {
-      font-size: 1.8rem;
-      font-weight: 300;
-      letter-spacing: 2px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: var(--spacing-sm);
-      margin-bottom: var(--spacing-lg);
+    .resume-template.modern .resume-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8pt;
     }
 
-    .resume-template.creative .skill-tag {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+    .resume-template.modern .skill-tag {
+      background: var(--background);
+      color: var(--primary);
+      padding: 4pt 8pt;
+      border-radius: 15pt;
+      font-size: 9pt;
+      font-weight: 500;
+      border: 1px solid var(--border);
     }
 
-    /* قالب تنفيذي */
+    /* قالب تنفيذي - محسّن */
     .resume-template.executive {
       background: #1a1a1a;
       color: #e0e0e0;
+      padding: 30mm 25mm;
     }
 
     .resume-template.executive .resume-header {
-      border-bottom: 2px solid #c99a6b;
-      padding-bottom: var(--spacing-xl);
-      margin-bottom: var(--spacing-xl);
       text-align: center;
+      margin-bottom: 25pt;
+      padding-bottom: 15pt;
+      border-bottom: 2px solid #c99a6b;
     }
 
     .resume-template.executive .resume-name {
       color: #c99a6b;
-      font-size: 2.2rem;
+      font-size: 20pt;
       font-weight: 300;
       letter-spacing: 2px;
-      margin-bottom: var(--spacing-md);
+      margin-bottom: 10pt;
     }
 
     .resume-template.executive .resume-contact {
       display: flex;
       justify-content: center;
-      gap: var(--spacing-xl);
+      gap: 20pt;
       flex-wrap: wrap;
-      margin-top: var(--spacing-md);
+      margin-top: 15pt;
     }
 
     .resume-template.executive .contact-item {
       color: #c99a6b;
       font-weight: 500;
+      font-size: 10pt;
+    }
+
+    .resume-template.executive .resume-section {
+      margin-bottom: 20pt;
+      page-break-inside: avoid;
     }
 
     .resume-template.executive .resume-section-title {
       color: #c99a6b;
-      font-size: 1.4rem;
+      font-size: 14pt;
       font-weight: 300;
       letter-spacing: 1px;
       border-bottom: 1px solid #333;
-      padding-bottom: var(--spacing-sm);
-      margin-bottom: var(--spacing-lg);
+      padding-bottom: 5pt;
+      margin-bottom: 15pt;
+    }
+
+    .resume-template.executive .resume-entry {
+      margin-bottom: 15pt;
+      page-break-inside: avoid;
+    }
+
+    .resume-template.executive .resume-entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 5pt;
     }
 
     .resume-template.executive .resume-entry-title {
       color: #ffffff;
+      font-weight: 600;
+      font-size: 12pt;
+    }
+
+    .resume-template.executive .resume-entry-date {
+      color: #c99a6b;
+      font-weight: 500;
+      font-size: 10pt;
+    }
+
+    .resume-template.executive .resume-entry-subtitle {
+      color: #b0b0b0;
+      font-weight: 500;
+      font-size: 11pt;
+      margin-bottom: 5pt;
+    }
+
+    .resume-template.executive .resume-entry-description {
+      color: #e0e0e0;
+      font-size: 10pt;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .resume-template.executive .resume-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8pt;
     }
 
     .resume-template.executive .skill-tag {
       background: #333;
       color: #c99a6b;
+      padding: 4pt 8pt;
+      border-radius: 15pt;
+      font-size: 9pt;
+      font-weight: 500;
       border: 1px solid #c99a6b;
     }
 
@@ -1948,7 +2049,7 @@
     }
 
     /* ============================================
-       الاستجابة والشاشات الصغيرة
+       الاستجابة والشاشات الصغيرة - تحسينات شاملة
        ============================================ */
 
     @media (max-width: 1024px) {
@@ -1972,6 +2073,11 @@
 
       .hero h1 {
         font-size: var(--font-size-4xl);
+      }
+
+      .resume-container {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-md);
       }
     }
 
@@ -2042,7 +2148,36 @@
         font-size: var(--font-size-2xl);
       }
 
-      .resume-template {
+      .resume-container {
+        padding: var(--spacing-md);
+        margin: var(--spacing-sm);
+        border-radius: var(--radius-md);
+      }
+
+      .resume-template.ats-simple {
+        padding: 15mm 10mm;
+        font-size: 10pt;
+      }
+
+      .resume-template.modern {
+        padding: 20mm 15mm;
+      }
+
+      .resume-template.modern .resume-header {
+        padding: 20mm 15mm;
+        margin: -20mm -15mm 20mm -15mm;
+      }
+
+      .resume-template.executive {
+        padding: 20mm 15mm;
+      }
+
+      .builder-form,
+      .builder-preview {
+        padding: var(--spacing-lg);
+      }
+
+      .builder-sidebar {
         padding: var(--spacing-lg);
       }
     }
@@ -2088,20 +2223,52 @@
         grid-template-columns: 1fr;
       }
 
-      .resume-template {
-        padding: var(--spacing-md);
+      .resume-container {
+        padding: var(--spacing-sm);
+        margin: 0;
+        border-radius: var(--radius-sm);
       }
 
       .resume-template.ats-simple {
-        font-size: 10pt;
+        padding: 10mm 5mm;
+        font-size: 9pt;
+        line-height: 1.3;
+      }
+
+      .resume-template.ats-simple .resume-name {
+        font-size: 14pt;
+      }
+
+      .resume-template.modern {
+        padding: 15mm 10mm;
+      }
+
+      .resume-template.modern .resume-header {
+        padding: 15mm 10mm;
+        margin: -15mm -10mm 15mm -10mm;
       }
 
       .resume-template.modern .resume-name {
-        font-size: 1.8rem;
+        font-size: 18pt;
       }
 
-      .resume-template.creative .resume-name {
-        font-size: 2rem;
+      .resume-template.executive {
+        padding: 15mm 10mm;
+      }
+
+      .resume-template.executive .resume-name {
+        font-size: 16pt;
+      }
+
+      .builder-form,
+      .builder-preview,
+      .builder-sidebar {
+        padding: var(--spacing-md);
+      }
+
+      .nav-item {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-sm);
       }
     }
 
@@ -2112,24 +2279,36 @@
     @media print {
       body {
         background-color: white;
-        font-size: 12pt;
+        font-size: 11pt;
+        margin: 0;
+        padding: 0;
       }
 
-      header, footer, nav, .btn, .alert, .no-print {
+      header, footer, nav, .btn, .alert, .no-print, .builder-sidebar, .builder-form {
         display: none !important;
       }
 
-      .resume-template {
+      .resume-container {
         box-shadow: none;
-        padding: 20mm;
         border: none;
         margin: 0;
+        padding: 0;
         max-width: 100%;
+        width: 100%;
+        min-height: auto;
         page-break-after: always;
       }
 
-      .resume-template:last-child {
+      .resume-container:last-child {
         page-break-after: auto;
+      }
+
+      .resume-template {
+        width: 100%;
+        height: auto;
+        padding: 0;
+        margin: 0;
+        overflow: visible;
       }
 
       /* تحسينات للطباعة ATS */
@@ -2137,30 +2316,78 @@
         padding: 15mm;
         font-size: 11pt;
         line-height: 1.4;
+        font-family: 'Times New Roman', serif;
+      }
+
+      .resume-template.ats-simple .resume-header {
+        text-align: center;
+        margin-bottom: 15pt;
+        padding-bottom: 10pt;
+        border-bottom: 1px solid #000;
+      }
+
+      .resume-template.ats-simple .resume-name {
+        font-size: 16pt;
+        font-weight: bold;
+        color: #000;
+        text-shadow: none;
       }
 
       .resume-template.ats-simple .resume-contact {
         display: block;
-        margin-bottom: 1rem;
+        text-align: center;
+        margin-bottom: 0;
       }
 
       .resume-template.ats-simple .contact-item {
-        display: block;
-        margin-bottom: 0.3rem;
+        display: inline;
+        margin: 0 8pt;
         background: transparent !important;
         border: none !important;
         padding: 0 !important;
+        color: #000 !important;
+      }
+
+      .resume-template.ats-simple .resume-section-title {
+        font-size: 12pt;
+        font-weight: bold;
+        color: #000;
+        text-transform: uppercase;
+        margin-bottom: 8pt;
+      }
+
+      .resume-template.ats-simple .resume-entry-title {
+        font-weight: bold;
+        color: #000;
+      }
+
+      .resume-template.ats-simple .resume-entry-date {
+        font-style: italic;
+        color: #000;
+      }
+
+      .resume-template.ats-simple .resume-entry-subtitle {
+        font-style: italic;
+        color: #000;
+      }
+
+      .resume-template.ats-simple .resume-entry-description {
+        color: #000;
+        font-size: 10pt;
       }
 
       /* تحسينات للطباعة الحديثة */
       .resume-template.modern {
         background: white !important;
+        padding: 20mm;
       }
 
       .resume-template.modern .resume-header {
         background: #f8f9fa !important;
         color: #333 !important;
         border-bottom: 2px solid #dee2e6 !important;
+        padding: 20mm;
+        margin: -20mm -20mm 20mm -20mm;
       }
 
       .resume-template.modern .resume-name {
@@ -2174,30 +2401,11 @@
         border: 1px solid #dee2e6 !important;
       }
 
-      /* تحسينات للطباعة الإبداعية */
-      .resume-template.creative {
-        background: white !important;
-        color: #333 !important;
-      }
-
-      .resume-template.creative .resume-header {
-        border-bottom: 2px solid #dee2e6 !important;
-      }
-
-      .resume-template.creative .resume-name {
-        color: #333 !important;
-      }
-
-      .resume-template.creative .contact-item {
-        background: #f8f9fa !important;
-        color: #333 !important;
-        border: 1px solid #dee2e6 !important;
-      }
-
       /* تحسينات للطباعة التنفيذية */
       .resume-template.executive {
         background: white !important;
         color: #333 !important;
+        padding: 20mm;
       }
 
       .resume-template.executive .resume-name {
@@ -2219,32 +2427,47 @@
       }
 
       .resume-section {
-        margin-bottom: 15mm;
+        margin-bottom: 15pt;
         page-break-inside: avoid;
       }
 
       .resume-entry {
-        margin-bottom: 10mm;
+        margin-bottom: 10pt;
         page-break-inside: avoid;
       }
 
       .resume-entry-header {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: flex-start;
-        gap: 2mm;
+        margin-bottom: 4pt;
       }
 
       .resume-skills {
         display: flex;
         flex-wrap: wrap;
-        gap: 5mm;
+        gap: 5pt;
       }
 
       .skill-tag {
         background: #f8f9fa !important;
         color: #333 !important;
         border: 1px solid #dee2e6 !important;
-        padding: 2mm 5mm;
+        padding: 2pt 5pt;
+        font-size: 9pt;
+      }
+
+      /* إزالة所有الزينة والظلال عند الطباعة */
+      * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      .builder-preview {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
       }
     }
 
@@ -2408,10 +2631,69 @@
       font-weight: bold;
       margin-right: var(--spacing-xs);
     }
+
+    /* ============================================
+       إصلاحات خاصة للجوال والتصدير
+       ============================================ */
+
+    /* منع التمرير الأفقي على الجوال */
+    @media (max-width: 768px) {
+      body {
+        overflow-x: hidden;
+      }
+      
+      .container {
+        padding: 0 var(--spacing-sm);
+      }
+      
+      .builder-layout {
+        gap: var(--spacing-lg);
+      }
+      
+      /* إصلاح القائمة المتنقلة */
+      .mobile-menu {
+        width: 85%;
+        max-width: 280px;
+      }
+      
+      /* إصلاح الأزرار على الجوال */
+      .btn {
+        min-height: 44px;
+        touch-action: manipulation;
+      }
+      
+      /* إصلاح النماذج على الجوال */
+      input, textarea, select {
+        font-size: 16px; /* منع التكبير التلقائي على iOS */
+        min-height: 44px;
+      }
+    }
+
+    /* تحسينات خاصة لـ GitHub Pages */
+    .github-pages-fix {
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* إصلاح مشكلة الصفحة الإضافية في PDF */
+    .no-page-break {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .page-break-before {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    .page-break-after {
+      page-break-after: always;
+      break-after: page;
+    }
   </style>
 </head>
 <body>
-  <div id="app">
+  <div id="app" class="github-pages-fix">
     <!-- سيتم ملؤه بواسطة JavaScript -->
   </div>
 
@@ -2930,7 +3212,7 @@
         supportedFormats: ['PDF', 'DOCX'],
         compatibility: 'high',
         recommendations: ['يدعم التصاميم الإبداعية'],
-        bestTemplate: 'creative'
+        bestTemplate: 'modern'
       },
       smartrecruiters: {
         name: 'SmartRecruiters',
@@ -3270,8 +3552,10 @@
                       <i class="fas fa-file-alt"></i> ${t('viewAsText')}
                     </button>
                   </div>
-                  <div id="preview-section" class="resume-template">
-                    <!-- سيتم ملؤه ديناميكياً -->
+                  <div class="resume-container no-page-break">
+                    <div id="preview-section" class="resume-template">
+                      <!-- سيتم ملؤه ديناميكياً -->
+                    </div>
                   </div>
                 </div>
               </div>
@@ -4078,49 +4362,34 @@
       // إضافة كلاس القالب
       previewSection.className = `resume-template ${template}`;
 
-      // تحديد الألوان حسب القالب
-      let textColor = '#1F2937';
-      let secondaryColor = '#4B5563';
-      let accentColor = '#0B3D91';
-      
-      if (template === 'creative') {
-        textColor = '#ffffff';
-        secondaryColor = 'rgba(255, 255, 255, 0.9)';
-        accentColor = '#ffffff';
-      } else if (template === 'executive') {
-        textColor = '#e0e0e0';
-        secondaryColor = '#b0b0b0';
-        accentColor = '#c99a6b';
-      }
-
       // بناء HTML للسيرة الذاتية حسب القالب
       let resumeHTML = '';
 
       if (template === 'ats-simple') {
         // قالب ATS بسيط - نصي بحت
         resumeHTML = `
-          <div class="resume-header">
+          <div class="resume-header no-page-break">
             <div class="resume-name">${escapeHTML(data.personalInfo.fullName) || 'الاسم الكامل'}</div>
             <div class="resume-contact">
-              ${data.personalInfo.email ? `<div class="contact-item">${escapeHTML(data.personalInfo.email)}</div>` : ''}
-              ${data.personalInfo.phone ? `<div class="contact-item">${escapeHTML(data.personalInfo.phone)}</div>` : ''}
-              ${data.personalInfo.location ? `<div class="contact-item">${escapeHTML(data.personalInfo.location)}</div>` : ''}
-              ${data.personalInfo.website ? `<div class="contact-item">${escapeHTML(data.personalInfo.website)}</div>` : ''}
+              ${data.personalInfo.email ? `<span class="contact-item">${escapeHTML(data.personalInfo.email)}</span>` : ''}
+              ${data.personalInfo.phone ? `<span class="contact-item">${escapeHTML(data.personalInfo.phone)}</span>` : ''}
+              ${data.personalInfo.location ? `<span class="contact-item">${escapeHTML(data.personalInfo.location)}</span>` : ''}
+              ${data.personalInfo.website ? `<span class="contact-item">${escapeHTML(data.personalInfo.website)}</span>` : ''}
             </div>
           </div>
 
           ${data.personalInfo.summary ? `
-            <div class="resume-section">
+            <div class="resume-section no-page-break">
               <div class="resume-section-title">PROFESSIONAL SUMMARY</div>
               <div class="resume-entry-description">${escapeHTML(data.personalInfo.summary)}</div>
             </div>
           ` : ''}
 
           ${data.experience.length > 0 ? `
-            <div class="resume-section">
+            <div class="resume-section no-page-break">
               <div class="resume-section-title">PROFESSIONAL EXPERIENCE</div>
               ${data.experience.map(exp => `
-                <div class="resume-entry">
+                <div class="resume-entry no-page-break">
                   <div class="resume-entry-header">
                     <div class="resume-entry-title">${escapeHTML(exp.jobTitle) || 'Job Title'}</div>
                     <div class="resume-entry-date">${exp.startDate || 'Start Date'} - ${exp.endDate || 'Present'}</div>
@@ -4133,10 +4402,10 @@
           ` : ''}
 
           ${data.education.length > 0 ? `
-            <div class="resume-section">
+            <div class="resume-section no-page-break">
               <div class="resume-section-title">EDUCATION</div>
               ${data.education.map(edu => `
-                <div class="resume-entry">
+                <div class="resume-entry no-page-break">
                   <div class="resume-entry-header">
                     <div class="resume-entry-title">${escapeHTML(edu.degree)} in ${escapeHTML(edu.field)}</div>
                     <div class="resume-entry-date">${edu.graduationDate || 'Graduation Date'}</div>
@@ -4148,17 +4417,21 @@
           ` : ''}
 
           ${data.skills.length > 0 ? `
-            <div class="resume-section">
+            <div class="resume-section no-page-break">
               <div class="resume-section-title">SKILLS</div>
-              <div class="resume-entry-description">${data.skills.filter(s => s).join(', ')}</div>
+              <div class="resume-skills">
+                ${data.skills.filter(s => s).map(skill => `
+                  <span class="skill-tag">${escapeHTML(skill)}</span>
+                `).join('')}
+              </div>
             </div>
           ` : ''}
 
           ${data.certifications.length > 0 ? `
-            <div class="resume-section">
+            <div class="resume-section no-page-break">
               <div class="resume-section-title">CERTIFICATIONS</div>
               ${data.certifications.map(cert => `
-                <div class="resume-entry">
+                <div class="resume-entry no-page-break">
                   <div class="resume-entry-header">
                     <div class="resume-entry-title">${escapeHTML(cert.certificateName)}</div>
                     <div class="resume-entry-date">${cert.issueDate || 'Issue Date'}</div>
@@ -4170,10 +4443,10 @@
           ` : ''}
 
           ${data.projects.length > 0 ? `
-            <div class="resume-section">
+            <div class="resume-section no-page-break">
               <div class="resume-section-title">PROJECTS</div>
               ${data.projects.map(proj => `
-                <div class="resume-entry">
+                <div class="resume-entry no-page-break">
                   <div class="resume-entry-title">${escapeHTML(proj.projectName)}</div>
                   ${proj.projectLink ? `<div class="resume-entry-subtitle">${escapeHTML(proj.projectLink)}</div>` : ''}
                   ${proj.description ? `<div class="resume-entry-description">${escapeHTML(proj.description)}</div>` : ''}
@@ -4185,7 +4458,7 @@
       } else {
         // القوالب الأخرى
         resumeHTML = `
-          <div class="resume-header">
+          <div class="resume-header no-page-break">
             <div class="resume-name">${escapeHTML(data.personalInfo.fullName) || 'الاسم الكامل'}</div>
             <div class="resume-contact">
               ${data.personalInfo.email ? `<div class="contact-item">📧 ${escapeHTML(data.personalInfo.email)}</div>` : ''}
@@ -4196,77 +4469,77 @@
           </div>
 
           ${data.personalInfo.summary ? `
-            <div class="resume-section">
+            <div class="resume-section no-page-break">
               <div class="resume-section-title">${t('summary')}</div>
-              <div class="resume-entry-description" style="color: ${secondaryColor}">${escapeHTML(data.personalInfo.summary)}</div>
+              <div class="resume-entry-description">${escapeHTML(data.personalInfo.summary)}</div>
             </div>
           ` : ''}
 
           ${data.experience.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title" style="color: ${accentColor}">${t('experience')}</div>
+            <div class="resume-section no-page-break">
+              <div class="resume-section-title">${t('experience')}</div>
               ${data.experience.map(exp => `
-                <div class="resume-entry">
+                <div class="resume-entry no-page-break">
                   <div class="resume-entry-header">
-                    <div class="resume-entry-title" style="color: ${textColor}">${escapeHTML(exp.jobTitle) || 'المسمى الوظيفي'}</div>
-                    <div class="resume-entry-date" style="color: ${accentColor}">${exp.startDate || 'التاريخ'} - ${exp.endDate || 'حالياً'}</div>
+                    <div class="resume-entry-title">${escapeHTML(exp.jobTitle) || 'المسمى الوظيفي'}</div>
+                    <div class="resume-entry-date">${exp.startDate || 'التاريخ'} - ${exp.endDate || 'حالياً'}</div>
                   </div>
-                  <div class="resume-entry-subtitle" style="color: ${secondaryColor}">${escapeHTML(exp.company) || 'الشركة'}</div>
-                  ${exp.description ? `<div class="resume-entry-description" style="color: ${secondaryColor}">${escapeHTML(exp.description)}</div>` : ''}
+                  <div class="resume-entry-subtitle">${escapeHTML(exp.company) || 'الشركة'}</div>
+                  ${exp.description ? `<div class="resume-entry-description">${escapeHTML(exp.description)}</div>` : ''}
                 </div>
               `).join('')}
             </div>
           ` : ''}
 
           ${data.education.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title" style="color: ${accentColor}">${t('education')}</div>
+            <div class="resume-section no-page-break">
+              <div class="resume-section-title">${t('education')}</div>
               ${data.education.map(edu => `
-                <div class="resume-entry">
+                <div class="resume-entry no-page-break">
                   <div class="resume-entry-header">
-                    <div class="resume-entry-title" style="color: ${textColor}">${escapeHTML(edu.degree) || 'الدرجة'} في ${escapeHTML(edu.field) || 'التخصص'}</div>
-                    <div class="resume-entry-date" style="color: ${accentColor}">${edu.graduationDate || 'التاريخ'}</div>
+                    <div class="resume-entry-title">${escapeHTML(edu.degree) || 'الدرجة'} في ${escapeHTML(edu.field) || 'التخصص'}</div>
+                    <div class="resume-entry-date">${edu.graduationDate || 'التاريخ'}</div>
                   </div>
-                  <div class="resume-entry-subtitle" style="color: ${secondaryColor}">${escapeHTML(edu.institution) || 'المؤسسة'}</div>
+                  <div class="resume-entry-subtitle">${escapeHTML(edu.institution) || 'المؤسسة'}</div>
                 </div>
               `).join('')}
             </div>
           ` : ''}
 
           ${data.skills.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title" style="color: ${accentColor}">${t('skills')}</div>
+            <div class="resume-section no-page-break">
+              <div class="resume-section-title">${t('skills')}</div>
               <div class="resume-skills">
                 ${data.skills.filter(s => s).map(skill => `
-                  <span class="skill-tag" style="color: ${textColor}">${escapeHTML(skill)}</span>
+                  <span class="skill-tag">${escapeHTML(skill)}</span>
                 `).join('')}
               </div>
             </div>
           ` : ''}
 
           ${data.certifications.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title" style="color: ${accentColor}">${t('certifications')}</div>
+            <div class="resume-section no-page-break">
+              <div class="resume-section-title">${t('certifications')}</div>
               ${data.certifications.map(cert => `
-                <div class="resume-entry">
+                <div class="resume-entry no-page-break">
                   <div class="resume-entry-header">
-                    <div class="resume-entry-title" style="color: ${textColor}">${escapeHTML(cert.certificateName) || 'الشهادة'}</div>
-                    <div class="resume-entry-date" style="color: ${accentColor}">${cert.issueDate || 'التاريخ'}</div>
+                    <div class="resume-entry-title">${escapeHTML(cert.certificateName) || 'الشهادة'}</div>
+                    <div class="resume-entry-date">${cert.issueDate || 'التاريخ'}</div>
                   </div>
-                  <div class="resume-entry-subtitle" style="color: ${secondaryColor}">${escapeHTML(cert.issuer) || 'الجهة'}</div>
+                  <div class="resume-entry-subtitle">${escapeHTML(cert.issuer) || 'الجهة'}</div>
                 </div>
               `).join('')}
             </div>
           ` : ''}
 
           ${data.projects.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title" style="color: ${accentColor}">${t('projects')}</div>
+            <div class="resume-section no-page-break">
+              <div class="resume-section-title">${t('projects')}</div>
               ${data.projects.map(proj => `
-                <div class="resume-entry">
-                  <div class="resume-entry-title" style="color: ${textColor}">${escapeHTML(proj.projectName) || 'المشروع'}</div>
-                  ${proj.projectLink ? `<div class="resume-entry-subtitle" style="color: ${secondaryColor}">🔗 ${escapeHTML(proj.projectLink)}</div>` : ''}
-                  ${proj.description ? `<div class="resume-entry-description" style="color: ${secondaryColor}">${escapeHTML(proj.description)}</div>` : ''}
+                <div class="resume-entry no-page-break">
+                  <div class="resume-entry-title">${escapeHTML(proj.projectName) || 'المشروع'}</div>
+                  ${proj.projectLink ? `<div class="resume-entry-subtitle">🔗 ${escapeHTML(proj.projectLink)}</div>` : ''}
+                  ${proj.description ? `<div class="resume-entry-description">${escapeHTML(proj.description)}</div>` : ''}
                 </div>
               `).join('')}
             </div>
@@ -4470,7 +4743,9 @@
           scale: 2, 
           useCORS: true,
           letterRendering: true,
-          logging: false
+          logging: false,
+          windowWidth: preview.scrollWidth,
+          windowHeight: preview.scrollHeight
         },
         jsPDF: { 
           unit: 'mm', 
@@ -4478,28 +4753,42 @@
           orientation: 'portrait',
           compress: true
         },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak: { 
+          mode: ['avoid-all', 'css', 'legacy'],
+          before: '.page-break-before',
+          after: '.page-break-after',
+          avoid: '.no-page-break'
+        }
       };
 
       // إضافة كلاس خاص للطباعة
-      preview.classList.add('pdf-export');
+      const resumeContainer = document.querySelector('.resume-container');
+      if (resumeContainer) {
+        resumeContainer.classList.add('pdf-export');
+      }
 
       const runExport = () => {
         try {
-          html2pdf().set(opt).from(preview).save()
+          html2pdf().set(opt).from(resumeContainer || preview).save()
             .then(() => {
-              preview.classList.remove('pdf-export');
+              if (resumeContainer) {
+                resumeContainer.classList.remove('pdf-export');
+              }
               showLoadingIndicator(false);
               showNotification('تم تصدير السيرة الذاتية بنجاح', 'success');
             })
             .catch(error => {
-              preview.classList.remove('pdf-export');
+              if (resumeContainer) {
+                resumeContainer.classList.remove('pdf-export');
+              }
               showLoadingIndicator(false);
               console.error('Export error:', error);
               showNotification('فشل التصدير: ' + error.message, 'error');
             });
         } catch (error) {
-          preview.classList.remove('pdf-export');
+          if (resumeContainer) {
+            resumeContainer.classList.remove('pdf-export');
+          }
           showLoadingIndicator(false);
           console.error('Export error:', error);
           showNotification('خطأ في التصدير: ' + error.message, 'error');
@@ -4513,7 +4802,9 @@
         s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
         s.onload = () => runExport();
         s.onerror = () => {
-          preview.classList.remove('pdf-export');
+          if (resumeContainer) {
+            resumeContainer.classList.remove('pdf-export');
+          }
           showLoadingIndicator(false);
           showNotification('فشل تحميل مكتبة التصدير', 'error');
         };
@@ -4562,6 +4853,18 @@
         saveToLocalStorage();
       }
     }, 30000);
+
+    // إصلاح مشكلة GitHub Pages
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      // Local development
+    } else {
+      // Production (GitHub Pages)
+      const path = window.location.pathname.replace(/\/[^\/]*$/, '');
+      if (path) {
+        // Base URL for GitHub Pages
+        window.basePath = path;
+      }
+    }
   </script>
 </body>
 </html>

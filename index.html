@@ -754,9 +754,7 @@
       font-weight: 700;
       margin-bottom: var(--spacing-sm);
       background: linear-gradient(135deg, var(--accent) 0%, white 100%);
-      background-clip: text;
       -webkit-background-clip: text;
-      color: transparent;
       -webkit-text-fill-color: transparent;
     }
 
@@ -1088,7 +1086,7 @@
     }
 
     /* ============================================
-       صفحة المُنشئ (Builder) - محسّنة
+       صفحة المُنشئ (Builder)
        ============================================ */
 
     .builder-layout {
@@ -1166,10 +1164,10 @@
     }
 
     /* ============================================
-       تصميم السيرة الذاتية - محسّن للـ ATS
+       تصميم السيرة الذاتية - احترافي ومتعدد القوالب
        ============================================ */
 
-    .resume-container {
+    .resume-template {
       background: white;
       padding: var(--spacing-3xl);
       border-radius: var(--radius-lg);
@@ -1179,43 +1177,253 @@
       border: 1px solid var(--border);
       max-width: 210mm;
       margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+
+    /* قالب ATS بسيط */
+    .resume-template.ats-simple {
+      padding: var(--spacing-xl);
+      font-family: 'Times New Roman', serif;
+      font-size: 12pt;
+    }
+
+    .resume-template.ats-simple .resume-header {
+      text-align: left;
+      border-bottom: 1px solid #000;
+      padding-bottom: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .resume-template.ats-simple .resume-name {
+      font-size: 16pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .resume-template.ats-simple .resume-contact {
+      display: block;
+      font-size: 10pt;
+      line-height: 1.4;
+    }
+
+    .resume-template.ats-simple .contact-item {
+      display: inline;
+      margin-left: 1rem;
+    }
+
+    .resume-template.ats-simple .resume-section-title {
+      font-size: 12pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: none;
+      padding: 0;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .resume-template.ats-simple .resume-entry {
+      margin-bottom: 0.5rem;
+    }
+
+    .resume-template.ats-simple .resume-entry-header {
+      display: block;
+    }
+
+    .resume-template.ats-simple .resume-entry-title {
+      font-weight: bold;
+      display: inline;
+    }
+
+    .resume-template.ats-simple .resume-entry-date {
+      float: left;
+      font-style: italic;
+    }
+
+    .resume-template.ats-simple .resume-entry-subtitle {
+      font-style: italic;
+      display: block;
+    }
+
+    /* قالب احترافي حديث */
+    .resume-template.modern {
+      background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .resume-template.modern .resume-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: var(--spacing-2xl);
+      margin: calc(-1 * var(--spacing-3xl)) calc(-1 * var(--spacing-3xl)) var(--spacing-2xl);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      text-align: center;
+    }
+
+    .resume-template.modern .resume-name {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .resume-template.modern .resume-contact {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      flex-wrap: wrap;
+      margin-top: var(--spacing-md);
+    }
+
+    .resume-template.modern .contact-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: var(--spacing-xs) var(--spacing-md);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(10px);
+    }
+
+    .resume-template.modern .resume-section-title {
+      color: var(--primary);
+      font-size: 1.5rem;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
       position: relative;
     }
 
-    /* تنسيق عام لكل الأنظمة */
-    .resume-header {
+    .resume-template.modern .resume-section-title::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      right: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    /* قالب إبداعي */
+    .resume-template.creative {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .resume-template.creative .resume-header {
       text-align: center;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: var(--spacing-xl);
       margin-bottom: var(--spacing-xl);
-      page-break-inside: avoid;
+    }
+
+    .resume-template.creative .resume-name {
+      font-size: 3rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .resume-template.creative .resume-contact {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+
+    .resume-template.creative .contact-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: var(--spacing-sm);
+      border-radius: var(--radius-md);
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .resume-template.creative .resume-section-title {
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .resume-template.creative .skill-tag {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* قالب تنفيذي */
+    .resume-template.executive {
+      background: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .resume-template.executive .resume-header {
+      border-bottom: 2px solid #c99a6b;
+      padding-bottom: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
+      text-align: center;
+    }
+
+    .resume-template.executive .resume-name {
+      color: #c99a6b;
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .resume-template.executive .resume-contact {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-xl);
+      flex-wrap: wrap;
+      margin-top: var(--spacing-md);
+    }
+
+    .resume-template.executive .contact-item {
+      color: #c99a6b;
+      font-weight: 500;
+    }
+
+    .resume-template.executive .resume-section-title {
+      color: #c99a6b;
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #333;
+      padding-bottom: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .resume-template.executive .resume-entry-title {
+      color: #ffffff;
+    }
+
+    .resume-template.executive .skill-tag {
+      background: #333;
+      color: #c99a6b;
+      border: 1px solid #c99a6b;
+    }
+
+    /* العناصر المشتركة */
+    .resume-header {
+      margin-bottom: var(--spacing-xl);
+      position: relative;
     }
 
     .resume-name {
-      font-size: 2rem;
       font-weight: 700;
-      color: var(--text-primary);
       margin-bottom: var(--spacing-md);
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
     .resume-contact {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--spacing-md);
       margin-top: var(--spacing-md);
     }
 
     .contact-item {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-xs);
-      padding: var(--spacing-xs) var(--spacing-md);
-      background: var(--background);
-      border-radius: var(--radius-md);
-      font-size: var(--font-size-sm);
-      color: var(--text-secondary);
-      white-space: nowrap;
+      display: block;
+      margin-bottom: var(--spacing-xs);
     }
 
     .resume-section {
@@ -1224,14 +1432,9 @@
     }
 
     .resume-section-title {
-      font-size: 1.3rem;
       font-weight: 700;
-      color: var(--primary);
       margin-bottom: var(--spacing-lg);
-      padding-bottom: var(--spacing-sm);
-      border-bottom: 2px solid var(--border);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      position: relative;
     }
 
     .resume-entry {
@@ -1254,7 +1457,6 @@
 
     .resume-entry-title {
       font-weight: 600;
-      color: var(--text-primary);
       font-size: 1.1rem;
     }
 
@@ -1265,14 +1467,12 @@
     }
 
     .resume-entry-date {
-      color: var(--primary);
       font-size: var(--font-size-sm);
       font-weight: 500;
       white-space: nowrap;
     }
 
     .resume-entry-description {
-      color: var(--text-secondary);
       margin-top: var(--spacing-sm);
       font-size: var(--font-size-sm);
       line-height: 1.7;
@@ -1287,8 +1487,6 @@
     }
 
     .skill-tag {
-      background: linear-gradient(135deg, var(--background) 0%, var(--border) 100%);
-      color: var(--text-primary);
       padding: var(--spacing-xs) var(--spacing-md);
       border-radius: var(--radius-lg);
       font-size: var(--font-size-sm);
@@ -1297,208 +1495,10 @@
       transition: all 0.3s ease;
     }
 
-    /* تنسيق خاص لنظام Workday */
-    .resume-workday {
-      font-family: Arial, sans-serif;
+    .skill-tag:hover {
+      transform: translateY(-2px);
     }
 
-    .resume-workday .resume-header {
-      border-bottom: 3px solid var(--primary);
-      padding-bottom: var(--spacing-xl);
-    }
-
-    .resume-workday .resume-name {
-      color: var(--primary);
-    }
-
-    .resume-workday .resume-section-title {
-      background-color: var(--primary);
-      color: white;
-      padding: var(--spacing-sm) var(--spacing-md);
-      border-radius: var(--radius-md);
-      border: none;
-    }
-
-    .resume-workday .contact-item {
-      background: transparent;
-      border: 1px solid var(--border);
-      padding: var(--spacing-xs) var(--spacing-sm);
-    }
-
-    /* تنسيق خاص لنظام Oracle/Taleo */
-    .resume-oracle {
-      font-family: Times New Roman, serif;
-    }
-
-    .resume-oracle .resume-header {
-      text-align: right;
-      border-bottom: 2px solid var(--accent);
-    }
-
-    .resume-oracle .resume-name {
-      color: var(--primary);
-      font-size: 1.8rem;
-    }
-
-    .resume-oracle .resume-section-title {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
-    }
-
-    .resume-oracle .resume-entry-header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: var(--spacing-xs);
-    }
-
-    /* تنسيق خاص لنظام Greenhouse */
-    .resume-greenhouse {
-      font-family: Helvetica, Arial, sans-serif;
-    }
-
-    .resume-greenhouse .resume-header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-      color: white;
-      padding: var(--spacing-xl);
-      border-radius: var(--radius-lg);
-    }
-
-    .resume-greenhouse .resume-name {
-      color: white;
-    }
-
-    .resume-greenhouse .contact-item {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .resume-greenhouse .resume-section-title {
-      color: var(--primary);
-      border-left: 4px solid var(--accent);
-      padding-right: var(--spacing-md);
-      border-bottom: none;
-    }
-
-    /* تنسيق خاص لنظام iCIMS */
-    .resume-icims {
-      font-family: Calibri, Arial, sans-serif;
-    }
-
-    .resume-icims .resume-header {
-      border: 2px solid var(--primary);
-      padding: var(--spacing-lg);
-    }
-
-    .resume-icims .resume-name {
-      color: var(--primary);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: var(--spacing-sm);
-    }
-
-    .resume-icims .resume-section-title {
-      background-color: var(--background);
-      padding: var(--spacing-sm) var(--spacing-md);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-    }
-
-    /* تنسيق خاص لنظام Lever */
-    .resume-lever {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-
-    .resume-lever .resume-header {
-      text-align: left;
-      border-left: 5px solid var(--accent);
-      padding-left: var(--spacing-xl);
-    }
-
-    .resume-lever .resume-name {
-      color: var(--accent);
-    }
-
-    .resume-lever .resume-section-title {
-      color: var(--accent);
-      border-bottom: 3px solid var(--accent);
-    }
-
-    /* تنسيق خاص لنظام SmartRecruiters */
-    .resume-smartrecruiters {
-      font-family: Arial, sans-serif;
-    }
-
-    .resume-smartrecruiters .resume-header {
-      background-color: var(--background);
-      padding: var(--spacing-xl);
-      border-radius: var(--radius-lg);
-    }
-
-    .resume-smartrecruiters .resume-name {
-      color: var(--primary);
-    }
-
-    .resume-smartrecruiters .resume-section-title {
-      background-color: var(--primary);
-      color: white;
-      padding: var(--spacing-sm) var(--spacing-md);
-      border-radius: var(--radius-md);
-    }
-
-    /* تنسيق خاص لنظام BambooHR */
-    .resume-bamboohr {
-      font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-    }
-
-    .resume-bamboohr .resume-header {
-      border-top: 4px solid var(--accent);
-      padding-top: var(--spacing-xl);
-    }
-
-    .resume-bamboohr .resume-name {
-      color: var(--accent);
-    }
-
-    .resume-bamboohr .resume-section-title {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
-    }
-
-    /* تنسيق خاص لنظام ثنائي اللغة - عمودان (عربي | إنجليزي) */
-    .resume-bilingual {
-      display: block;
-      padding: 0;
-    }
-
-    .resume-bilingual .bilingual-layout {
-      display: flex;
-      gap: var(--spacing-lg);
-      align-items: flex-start;
-      width: 100%;
-    }
-
-    .resume-bilingual .bilingual-column {
-      width: 50%;
-      box-sizing: border-box;
-      padding: var(--spacing-xl);
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      min-height: 200px;
-    }
-
-    .resume-bilingual .bilingual-column.arabic {
-      direction: rtl;
-      text-align: right;
-    }
-
-    .resume-bilingual .bilingual-column.english {
-      direction: ltr;
-      text-align: left;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-    }
-
-    /* تنسيق نصي للـ ATS */
     .resume-text-view {
       background: #F3F4F6;
       padding: var(--spacing-xl);
@@ -1507,7 +1507,6 @@
       font-size: var(--font-size-sm);
       white-space: pre-wrap;
       word-wrap: break-word;
-      color: var(--text-primary);
       line-height: 1.8;
     }
 
@@ -2042,6 +2041,10 @@
       .section-title h2 {
         font-size: var(--font-size-2xl);
       }
+
+      .resume-template {
+        padding: var(--spacing-lg);
+      }
     }
 
     @media (max-width: 480px) {
@@ -2085,13 +2088,25 @@
         grid-template-columns: 1fr;
       }
 
-      .resume-container {
-        padding: var(--spacing-lg);
+      .resume-template {
+        padding: var(--spacing-md);
+      }
+
+      .resume-template.ats-simple {
+        font-size: 10pt;
+      }
+
+      .resume-template.modern .resume-name {
+        font-size: 1.8rem;
+      }
+
+      .resume-template.creative .resume-name {
+        font-size: 2rem;
       }
     }
 
     /* ============================================
-       الطباعة والتصدير - محسّن
+       الطباعة والتصدير - تحسينات خاصة بـ PDF
        ============================================ */
 
     @media print {
@@ -2104,92 +2119,132 @@
         display: none !important;
       }
 
-      .resume-container {
+      .resume-template {
         box-shadow: none;
         padding: 20mm;
         border: none;
         margin: 0;
         max-width: 100%;
+        page-break-after: always;
       }
 
-      .resume-contact {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 5mm;
+      .resume-template:last-child {
+        page-break-after: auto;
       }
 
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 2mm;
+      /* تحسينات للطباعة ATS */
+      .resume-template.ats-simple {
+        padding: 15mm;
+        font-size: 11pt;
+        line-height: 1.4;
+      }
+
+      .resume-template.ats-simple .resume-contact {
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      .resume-template.ats-simple .contact-item {
+        display: block;
+        margin-bottom: 0.3rem;
         background: transparent !important;
-        border: 1px solid #ddd !important;
-        padding: 2mm 4mm !important;
-        border-radius: 2mm !important;
-        font-size: 10pt !important;
-        white-space: nowrap !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+
+      /* تحسينات للطباعة الحديثة */
+      .resume-template.modern {
+        background: white !important;
+      }
+
+      .resume-template.modern .resume-header {
+        background: #f8f9fa !important;
+        color: #333 !important;
+        border-bottom: 2px solid #dee2e6 !important;
+      }
+
+      .resume-template.modern .resume-name {
+        color: #333 !important;
+        text-shadow: none !important;
+      }
+
+      .resume-template.modern .contact-item {
+        background: #f8f9fa !important;
+        color: #333 !important;
+        border: 1px solid #dee2e6 !important;
+      }
+
+      /* تحسينات للطباعة الإبداعية */
+      .resume-template.creative {
+        background: white !important;
+        color: #333 !important;
+      }
+
+      .resume-template.creative .resume-header {
+        border-bottom: 2px solid #dee2e6 !important;
+      }
+
+      .resume-template.creative .resume-name {
+        color: #333 !important;
+      }
+
+      .resume-template.creative .contact-item {
+        background: #f8f9fa !important;
+        color: #333 !important;
+        border: 1px solid #dee2e6 !important;
+      }
+
+      /* تحسينات للطباعة التنفيذية */
+      .resume-template.executive {
+        background: white !important;
+        color: #333 !important;
+      }
+
+      .resume-template.executive .resume-name {
+        color: #333 !important;
+      }
+
+      .resume-template.executive .contact-item {
+        color: #333 !important;
+      }
+
+      .resume-template.executive .resume-entry-title {
+        color: #333 !important;
+      }
+
+      .resume-template.executive .skill-tag {
+        background: #f8f9fa !important;
+        color: #333 !important;
+        border: 1px solid #dee2e6 !important;
       }
 
       .resume-section {
-        margin-bottom: 10mm;
+        margin-bottom: 15mm;
         page-break-inside: avoid;
       }
 
       .resume-entry {
-        margin-bottom: 8mm;
+        margin-bottom: 10mm;
         page-break-inside: avoid;
       }
 
       .resume-entry-header {
-        flex-direction: row;
+        flex-direction: column;
         align-items: flex-start;
         gap: 2mm;
       }
 
-      .resume-entry-date {
-        white-space: nowrap;
-        font-size: 10pt;
+      .resume-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5mm;
       }
 
       .skill-tag {
-        background: #f5f5f5 !important;
-        border: 1px solid #ddd !important;
-        padding: 2mm 4mm !important;
-        border-radius: 2mm !important;
-        font-size: 10pt !important;
-      }
-
-      /* تحسينات خاصة للطباعة */
-      .resume-workday,
-      .resume-oracle,
-      .resume-greenhouse,
-      .resume-icims,
-      .resume-lever,
-      .resume-smartrecruiters,
-      .resume-bamboohr {
-        font-family: Arial, sans-serif !important;
-        font-size: 11pt !important;
-      }
-
-      .resume-workday .resume-section-title,
-      .resume-smartrecruiters .resume-section-title {
-        background: white !important;
-        color: black !important;
-        border: 1px solid black !important;
-        padding: 2mm !important;
-      }
-
-      .resume-greenhouse .resume-header {
-        background: white !important;
-        color: black !important;
-        border: 1px solid black !important;
-      }
-
-      .resume-greenhouse .contact-item {
-        background: white !important;
-        color: black !important;
-        border: 1px solid black !important;
+        background: #f8f9fa !important;
+        color: #333 !important;
+        border: 1px solid #dee2e6 !important;
+        padding: 2mm 5mm;
       }
     }
 
@@ -2242,22 +2297,19 @@
     /* تحسينات للتصدير */
     .pdf-export .resume-contact {
       display: flex !important;
-      flex-direction: row !important;
-      flex-wrap: wrap !important;
-      justify-content: center !important;
-      gap: 5mm !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 4px !important;
     }
 
     .pdf-export .contact-item {
-      display: flex !important;
-      align-items: center !important;
-      gap: 2mm !important;
-      background: transparent !important;
+      display: block !important;
+      text-align: center !important;
+      margin-bottom: 2px !important;
+      background: #f5f5f5 !important;
       border: 1px solid #ddd !important;
-      padding: 2mm 4mm !important;
-      border-radius: 2mm !important;
-      font-size: 10pt !important;
-      white-space: nowrap !important;
+      padding: 4px 8px !important;
+      border-radius: 4px !important;
     }
 
     /* تحريك العناصر */
@@ -2290,6 +2342,72 @@
         max-width: 300px;
       }
     }
+
+    /* ============================================
+       تحسينات خاصة بـ ATS
+       ============================================ */
+
+    .ats-compatibility-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      margin-left: var(--spacing-sm);
+    }
+
+    .ats-compatibility-indicator.high {
+      background: #D1FAE5;
+      color: #065F46;
+    }
+
+    .ats-compatibility-indicator.medium {
+      background: #FEF3C7;
+      color: #78350F;
+    }
+
+    .ats-compatibility-indicator.low {
+      background: #FEE2E2;
+      color: #7F1D1D;
+    }
+
+    .ats-recommendations {
+      background: #F3F4F6;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+
+    .ats-recommendations h4 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-sm);
+      font-size: var(--font-size-sm);
+    }
+
+    .ats-recommendations ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ats-recommendations li {
+      padding: var(--spacing-xs) 0;
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-xs);
+    }
+
+    .ats-recommendations li::before {
+      content: '•';
+      color: var(--accent);
+      font-weight: bold;
+      margin-right: var(--spacing-xs);
+    }
   </style>
 </head>
 <body>
@@ -2310,7 +2428,7 @@
       </button>
     </div>
     <div class="mobile-menu-content">
-      <!-- سيتم ملؤه ديناميكياً -->
+      <!-- سيتم ملؤه بواسطة JavaScript -->
     </div>
   </div>
 
@@ -2384,6 +2502,7 @@
         certifications: 'الشهادات',
         projects: 'المشاريع',
         selectATS: 'اختر نظام التوظيف',
+        selectTemplate: 'اختر القالب',
         genericATS: 'عام (Generic ATS)',
         workday: 'Workday',
         oracle: 'Oracle/Taleo',
@@ -2433,6 +2552,8 @@
         templateModern: 'قالب حديث',
         templateCreative: 'قالب إبداعي',
         templateMinimal: 'قالب بسيط',
+        templateExecutive: 'قالب تنفيذي',
+        templateAtsSimple: 'قالب ATS بسيط',
         atsFriendly: 'متوافق مع ATS',
         notAtsFriendly: 'غير متوافق مع ATS',
         viewAsText: 'عرض كنص',
@@ -2499,7 +2620,16 @@
         stats4: '24/7',
         stats4Label: 'دعم فني',
         ctaTitle: 'جاهز للبدء؟',
-        ctaSubtitle: 'انضم إلى آلاف المحترفين الذين استفادوا من خدمتنا'
+        ctaSubtitle: 'انضم إلى آلاف المحترفين الذين استفادوا من خدمتنا',
+        atsCompatibilityHigh: 'توافق عالي',
+        atsCompatibilityMedium: 'توافق متوسط',
+        atsCompatibilityLow: 'توافق منخفض',
+        atsRecommendations: 'توصيات ATS',
+        atsRecommendation1: 'استخدم كلمات مفتاحية من الوصف الوظيفي',
+        atsRecommendation2: 'تجنب الجداول والأعمدة المعقدة',
+        atsRecommendation3: 'استخدم تنسيق بسيط وواضح',
+        atsRecommendation4: 'تجنب الصور والرموز',
+        atsRecommendation5: 'استخدم خطوط قياسية مثل Arial أو Times New Roman'
       },
       en: {
         appTitle: 'CV Studio',
@@ -2524,6 +2654,7 @@
         certifications: 'Certifications',
         projects: 'Projects',
         selectATS: 'Select ATS System',
+        selectTemplate: 'Select Template',
         genericATS: 'Generic ATS',
         workday: 'Workday',
         oracle: 'Oracle/Taleo',
@@ -2573,6 +2704,8 @@
         templateModern: 'Modern Template',
         templateCreative: 'Creative Template',
         templateMinimal: 'Minimal Template',
+        templateExecutive: 'Executive Template',
+        templateAtsSimple: 'Simple ATS Template',
         atsFriendly: 'ATS Friendly',
         notAtsFriendly: 'Not ATS Friendly',
         viewAsText: 'View as Text',
@@ -2639,7 +2772,16 @@
         stats4: '24/7',
         stats4Label: 'Support',
         ctaTitle: 'Ready to Start?',
-        ctaSubtitle: 'Join thousands of professionals who have benefited from our service'
+        ctaSubtitle: 'Join thousands of professionals who have benefited from our service',
+        atsCompatibilityHigh: 'High Compatibility',
+        atsCompatibilityMedium: 'Medium Compatibility',
+        atsCompatibilityLow: 'Low Compatibility',
+        atsRecommendations: 'ATS Recommendations',
+        atsRecommendation1: 'Use keywords from the job description',
+        atsRecommendation2: 'Avoid complex tables and columns',
+        atsRecommendation3: 'Use simple and clear formatting',
+        atsRecommendation4: 'Avoid images and icons',
+        atsRecommendation5: 'Use standard fonts like Arial or Times New Roman'
       }
     };
 
@@ -2733,137 +2875,120 @@
       }
     }
 
-    // ============ وظائف ATS محسّنة ============
+    // ============ وظائف ATS المحسّنة ============
 
     const ATSSystems = {
-      bilingual: {
-        name: 'Bilingual (AR/EN)',
-        description: 'نظام ثنائي اللغة يعرض قسم بالعربية وقسم بالإنجليزية جنبًا إلى جنب',
-        supportsPhotos: true,
-        supportedFormats: ['PDF', 'DOCX'],
-        recommendations: ['ضع المحتوى العربي في العمود الأيمن والإنجليزي في الأيسر'],
-        cssClass: 'resume-bilingual',
-        dateFormat: 'Month YYYY',
-        contactLayout: 'two-column',
-        sectionStyle: 'side-by-side'
-      },
       generic: {
         name: 'Generic ATS',
         description: 'نظام عام يدعم معظم الميزات',
         supportsPhotos: true,
         supportedFormats: ['PDF', 'DOCX', 'TXT'],
-        recommendations: [],
-        cssClass: 'resume-generic',
-        dateFormat: 'YYYY-MM',
-        contactLayout: 'horizontal',
-        sectionStyle: 'standard'
+        compatibility: 'high',
+        recommendations: ['استخدم تنسيق بسيط وواضح', 'تجنب الجداول المعقدة'],
+        bestTemplate: 'modern'
       },
       workday: {
         name: 'Workday',
         description: 'نظام Workday للموارد البشرية',
         supportsPhotos: false,
         supportedFormats: ['PDF', 'DOCX'],
-        recommendations: ['تجنب الصور والجداول المعقدة', 'استخدم تنسيق بسيط'],
-        cssClass: 'resume-workday',
-        dateFormat: 'MM/YYYY',
-        contactLayout: 'horizontal',
-        sectionStyle: 'highlighted'
+        compatibility: 'medium',
+        recommendations: ['تجنب الصور والجداول المعقدة', 'استخدم تنسيق بسيط', 'تجنب الأعمدة المتعددة'],
+        bestTemplate: 'ats-simple'
       },
       oracle: {
         name: 'Oracle/Taleo',
         description: 'نظام Oracle Taleo',
         supportsPhotos: false,
         supportedFormats: ['PDF', 'DOCX'],
-        recommendations: ['تجنب الصور', 'استخدم الخطوط القياسية'],
-        cssClass: 'resume-oracle',
-        dateFormat: 'Month YYYY',
-        contactLayout: 'vertical',
-        sectionStyle: 'underlined'
+        compatibility: 'medium',
+        recommendations: ['تجنب الصور', 'استخدم الخطوط القياسية', 'تجنب الرموز'],
+        bestTemplate: 'ats-simple'
       },
       greenhouse: {
         name: 'Greenhouse',
         description: 'نظام Greenhouse للتوظيف',
         supportsPhotos: true,
         supportedFormats: ['PDF', 'DOCX'],
-        recommendations: [],
-        cssClass: 'resume-greenhouse',
-        dateFormat: 'YYYY-MM',
-        contactLayout: 'horizontal',
-        sectionStyle: 'bordered'
+        compatibility: 'high',
+        recommendations: ['يمكن استخدام التصميمات الحديثة'],
+        bestTemplate: 'modern'
       },
       icims: {
         name: 'iCIMS',
         description: 'نظام iCIMS',
         supportsPhotos: false,
         supportedFormats: ['PDF', 'DOCX'],
-        recommendations: ['تجنب الصور والعناصر المرئية المعقدة'],
-        cssClass: 'resume-icims',
-        dateFormat: 'MM/YYYY',
-        contactLayout: 'horizontal',
-        sectionStyle: 'boxed'
+        compatibility: 'low',
+        recommendations: ['تجنب الصور والعناصر المرئية المعقدة', 'استخدم تنسيق نصي بحت'],
+        bestTemplate: 'ats-simple'
       },
       lever: {
         name: 'Lever',
         description: 'نظام Lever للتوظيف',
         supportsPhotos: true,
         supportedFormats: ['PDF', 'DOCX'],
-        recommendations: [],
-        cssClass: 'resume-lever',
-        dateFormat: 'YYYY-MM',
-        contactLayout: 'vertical',
-        sectionStyle: 'standard'
+        compatibility: 'high',
+        recommendations: ['يدعم التصاميم الإبداعية'],
+        bestTemplate: 'creative'
       },
       smartrecruiters: {
         name: 'SmartRecruiters',
         description: 'نظام SmartRecruiters',
         supportsPhotos: true,
         supportedFormats: ['PDF', 'DOCX'],
-        recommendations: [],
-        cssClass: 'resume-smartrecruiters',
-        dateFormat: 'MM/YYYY',
-        contactLayout: 'horizontal',
-        sectionStyle: 'highlighted'
+        compatibility: 'high',
+        recommendations: ['يدعم القوالب الحديثة'],
+        bestTemplate: 'modern'
       },
       bamboohr: {
         name: 'BambooHR',
         description: 'نظام BambooHR',
         supportsPhotos: true,
         supportedFormats: ['PDF', 'DOCX'],
-        recommendations: [],
-        cssClass: 'resume-bamboohr',
-        dateFormat: 'Month YYYY',
-        contactLayout: 'horizontal',
-        sectionStyle: 'underlined'
+        compatibility: 'medium',
+        recommendations: ['تجنب التصاميم المعقدة جداً'],
+        bestTemplate: 'modern'
       }
     };
 
-    // ============ قوالب السيرة الذاتية ============
+    // ============ قوالب السيرة الذاتية المحسّنة ============
 
     const ResumeTemplates = {
       modern: {
         name: 'Modern Template',
         atsFriendly: true,
-        description: 'قالب حديث ومتوازن'
+        description: 'قالب حديث ومتوازن',
+        compatibility: 'high',
+        features: ['تصميم عصري', 'ألوان احترافية', 'مناسب لمعظم الوظائف']
       },
       creative: {
         name: 'Creative Template',
         atsFriendly: false,
-        description: 'قالب إبداعي مع عناصر بصرية'
+        description: 'قالب إبداعي مع عناصر بصرية',
+        compatibility: 'low',
+        features: ['تصميم إبداعي', 'ألوان جريئة', 'مناسب للوظائف الإبداعية']
       },
       minimal: {
         name: 'Minimal Template',
         atsFriendly: true,
-        description: 'قالب بسيط وأنظف'
+        description: 'قالب بسيط وأنظف',
+        compatibility: 'high',
+        features: ['تصميم بسيط', 'تركيز على المحتوى', 'مثالي للوظائف التقليدية']
       },
       executive: {
         name: 'Executive Template',
         atsFriendly: true,
-        description: 'قالب احترافي للمديرين التنفيذيين'
+        description: 'قالب احترافي للمديرين التنفيذيين',
+        compatibility: 'high',
+        features: ['تصميم فاخر', 'ألوان داكنة', 'مناسب للمناصب العليا']
       },
-      academic: {
-        name: 'Academic Template',
+      'ats-simple': {
+        name: 'Simple ATS Template',
         atsFriendly: true,
-        description: 'قالب مناسب للسير الذاتية الأكاديمية'
+        description: 'قالب بسيط متوافق مع جميع أنظمة ATS',
+        compatibility: 'high',
+        features: ['تنسيق نصي بحت', 'متوافق مع جميع الأنظمة', 'أفضل للتوظيف الآلي']
       }
     };
 
@@ -2876,7 +3001,7 @@
         phone: '+966 50 123 4567',
         location: 'الرياض، السعودية',
         website: 'https://example.com',
-        summary: 'مهندس برمجيات متمرس مع خبرة 5 سنوات في تطوير التطبيقات الويب والهاتف المحمول. متخصص في React و Node.js مع خبرة في قواعد البيانات والأنظمة السحابية.'
+        summary: 'مهندس برمجيات متمرس مع خبرة 5 سنوات في تطوير التطبيقات الويب والهاتف المحمول. متخصص في React و Node.js مع خبرة في بناء أنظمة قابلة للتطوير.'
       },
       experience: [
         {
@@ -2884,14 +3009,14 @@
           company: 'شركة التقنية المتقدمة',
           startDate: '2020-01',
           endDate: 'الحالي',
-          description: 'قيادة فريق التطوير وتصميم معماريات الأنظمة. تطوير تطبيقات ويب باستخدام أحدث التقنيات وضمان جودة الكود وأداء النظام.'
+          description: 'قيادة فريق التطوير وتصميم معماريات الأنظمة. تطوير واجهات مستخدم تفاعلية باستخدام React و Redux. تحسين أداء التطبيقات بنسبة 40%.'
         },
         {
           jobTitle: 'مهندس برمجيات',
           company: 'شركة الحلول الرقمية',
           startDate: '2018-06',
           endDate: '2019-12',
-          description: 'تطوير تطبيقات ويب باستخدام React و Node.js. المشاركة في تصميم قواعد البيانات وتحسين أداء التطبيقات.'
+          description: 'تطوير تطبيقات ويب باستخدام React و Node.js. بناء واجهات برمجية RESTful APIs. العمل مع فرق متعددة التخصصات.'
         }
       ],
       education: [
@@ -2914,12 +3039,12 @@
         {
           projectName: 'تطبيق إدارة المشاريع',
           projectLink: 'https://github.com/example/project',
-          description: 'تطبيق ويب شامل لإدارة المشاريع والمهام مع واجهة مستخدم حديثة وإمكانيات التعاون الفوري.'
+          description: 'تطبيق ويب لإدارة المشاريع والمهام باستخدام React و Node.js. يدعم التعاون في الوقت الفعلي.'
         }
       ]
     };
 
-    // ============ دوال العرض ============
+    // ============ دوال العرض المحسّنة ============
 
     function renderPage() {
       const app = document.getElementById('app');
@@ -2948,7 +3073,7 @@
       }
       
       attachEventListeners();
-      updateMobileMenu();
+      renderMobileMenu();
     }
 
     function renderHome() {
@@ -3071,7 +3196,30 @@
                   `).join('')}
                 </select>
                 
+                <div class="ats-compatibility-indicator ${atsSystem.compatibility}">
+                  <i class="fas fa-${atsSystem.compatibility === 'high' ? 'check-circle' : atsSystem.compatibility === 'medium' ? 'exclamation-circle' : 'times-circle'}"></i>
+                  ${t('atsCompatibility' + atsSystem.compatibility.charAt(0).toUpperCase() + atsSystem.compatibility.slice(1))}
+                </div>
+
                 ${photoWarning}
+
+                <h3 style="margin-bottom: 1rem;">${t('selectTemplate')}</h3>
+                <select id="template-select" class="form-group" style="width: 100%; margin-bottom: 1rem;">
+                  ${Object.entries(ResumeTemplates).map(([key, template]) => `
+                    <option value="${key}" ${AppState.currentTemplate === key ? 'selected' : ''}>
+                      ${template.name}
+                    </option>
+                  `).join('')}
+                </select>
+
+                <div class="ats-recommendations">
+                  <h4>${t('atsRecommendations')}</h4>
+                  <ul>
+                    ${atsSystem.recommendations.map(rec => `
+                      <li>${rec}</li>
+                    `).join('')}
+                  </ul>
+                </div>
 
                 <div style="margin-bottom: 1rem;">
                   <strong>الأقسام</strong>
@@ -3122,7 +3270,7 @@
                       <i class="fas fa-file-alt"></i> ${t('viewAsText')}
                     </button>
                   </div>
-                  <div id="preview-section" class="resume-container">
+                  <div id="preview-section" class="resume-template">
                     <!-- سيتم ملؤه ديناميكياً -->
                   </div>
                 </div>
@@ -3154,7 +3302,14 @@
                       <span class="template-badge ${template.atsFriendly ? 'ats-friendly' : 'not-ats-friendly'}">
                         ${template.atsFriendly ? t('atsFriendly') : t('notAtsFriendly')}
                       </span>
+                      <div class="ats-compatibility-indicator ${template.compatibility}">
+                        <i class="fas fa-${template.compatibility === 'high' ? 'check-circle' : template.compatibility === 'medium' ? 'exclamation-circle' : 'times-circle'}"></i>
+                        ${t('atsCompatibility' + template.compatibility.charAt(0).toUpperCase() + template.compatibility.slice(1))}
+                      </div>
                       <p>${template.description}</p>
+                      <ul style="margin: 1rem 0; padding-right: 1rem;">
+                        ${template.features.map(f => `<li style="margin-bottom: 0.5rem; font-size: 0.9rem;">${f}</li>`).join('')}
+                      </ul>
                       <button class="btn btn-primary btn-small" onclick="selectTemplate('${key}'); navigateTo('builder');">
                         ${t('preview')}
                       </button>
@@ -3301,8 +3456,8 @@
 
     function renderDashboard() {
       const mockResumes = [
-        { id: 1, name: 'سيرتي الأولى', date: '2024-12-09', atsSystem: 'Workday' },
-        { id: 2, name: 'سيرة تقنية', date: '2024-12-08', atsSystem: 'Generic' }
+        { id: 1, name: 'سيرتي الأولى', date: '2024-12-09', atsSystem: 'Workday', template: 'modern' },
+        { id: 2, name: 'سيرة تقنية', date: '2024-12-08', atsSystem: 'Generic', template: 'ats-simple' }
       ];
 
       return `
@@ -3326,7 +3481,7 @@
                       </div>
                     </div>
                     <div style="font-size: 0.9rem; color: #6B7280;">
-                      ATS: ${resume.atsSystem}
+                      ATS: ${resume.atsSystem} | القالب: ${ResumeTemplates[resume.template]?.name || resume.template}
                     </div>
                     <div class="resume-item-actions">
                       <button class="btn btn-primary btn-small" onclick="navigateTo('builder')">
@@ -3523,7 +3678,42 @@
       `;
     }
 
-    // ============ وظائف التفاعل محسّنة ============
+    function renderMobileMenu() {
+      const menuContent = document.querySelector('.mobile-menu-content');
+      if (menuContent) {
+        menuContent.innerHTML = `
+          <a href="#" onclick="navigateTo('home'); closeMobileMenu();" class="nav-link">
+            <i class="fas fa-home"></i> ${t('home')}
+          </a>
+          <a href="#" onclick="navigateTo('builder'); closeMobileMenu();" class="nav-link">
+            <i class="fas fa-edit"></i> ${t('builder')}
+          </a>
+          <a href="#" onclick="navigateTo('templates'); closeMobileMenu();" class="nav-link">
+            <i class="fas fa-file-alt"></i> ${t('templates')}
+          </a>
+          <a href="#" onclick="navigateTo('contact'); closeMobileMenu();" class="nav-link">
+            <i class="fas fa-envelope"></i> ${t('contact')}
+          </a>
+          ${AppState.userAuth.isLoggedIn ? `
+            <a href="#" onclick="navigateTo('dashboard'); closeMobileMenu();" class="nav-link">
+              <i class="fas fa-tachometer-alt"></i> ${t('dashboard')}
+            </a>
+            <button class="btn btn-outline" onclick="logout(); closeMobileMenu();">
+              <i class="fas fa-sign-out-alt"></i> ${t('logout')}
+            </button>
+          ` : `
+            <button class="btn btn-primary" onclick="navigateTo('auth'); closeMobileMenu();">
+              <i class="fas fa-sign-in-alt"></i> ${t('login')}
+            </button>
+          `}
+          <button class="lang-toggle" onclick="toggleLanguage(); closeMobileMenu();">
+            <i class="fas fa-globe"></i> ${AppState.currentLanguage === 'ar' ? 'EN' : 'AR'}
+          </button>
+        `;
+      }
+    }
+
+    // ============ وظائف التفاعل المحسّنة ============
 
     function switchSection(section, evt) {
       document.querySelectorAll('.nav-item').forEach(item => {
@@ -3566,16 +3756,16 @@
               <label>${t('fullName')} *</label>
               <input type="text" id="fullName" value="${data.personalInfo.fullName}" 
                      onchange="updateResumeData('personalInfo', 'fullName', this.value); updatePreview();"
-                     placeholder="أدخل اسمك الكامل">
+                     placeholder="أحمد محمد علي">
             </div>
             <div class="form-group">
               <label>${t('email')} *</label>
               <input type="email" id="email" value="${data.personalInfo.email}"
                      onchange="updateResumeData('personalInfo', 'email', this.value); updatePreview();"
-                     placeholder="example@email.com">
+                     placeholder="ahmed@example.com">
             </div>
             <div class="form-group">
-              <label>${t('phone')} *</label>
+              <label>${t('phone')}</label>
               <input type="tel" id="phone" value="${data.personalInfo.phone}"
                      onchange="updateResumeData('personalInfo', 'phone', this.value); updatePreview();"
                      placeholder="+966 50 123 4567">
@@ -3595,15 +3785,14 @@
             <div class="form-group">
               <label>${t('summary')}</label>
               <textarea id="summary" onchange="updateResumeData('personalInfo', 'summary', this.value); updatePreview();"
-                        placeholder="اكتب ملخصاً مهنياً عن نفسك...">${data.personalInfo.summary}</textarea>
+                        placeholder="ملخص احترافي عن خبراتك ومهاراتك...">${data.personalInfo.summary}</textarea>
             </div>
-            ${ATSSystems[AppState.selectedATS].supportsPhotos ? `
-              <div class="form-group">
-                <label>صورة شخصية (اختياري)</label>
-                <input type="file" id="photo" accept="image/*" onchange="handlePhotoUpload(event);">
-                <div class="form-hint">PNG أو JPG، الحد الأقصى 2MB</div>
-              </div>
-            ` : ''}
+            <div class="form-group">
+              <label>صورة شخصية (اختياري)</label>
+              <input type="file" id="photo" accept="image/*" onchange="handlePhotoUpload(event);">
+              ${!ATSSystems[AppState.selectedATS].supportsPhotos ? 
+                `<div class="form-hint" style="color: #F59E0B;">${t('photoWarning')}</div>` : ''}
+            </div>
           `;
           break;
 
@@ -3616,13 +3805,13 @@
                   <label>${t('jobTitle')} *</label>
                   <input type="text" value="${exp.jobTitle}" 
                          onchange="updateExperience(${idx}, 'jobTitle', this.value); updatePreview();"
-                         placeholder="مثال: مهندس برمجيات">
+                         placeholder="مطور واجهات أمامية">
                 </div>
                 <div class="form-group">
                   <label>${t('company')} *</label>
                   <input type="text" value="${exp.company}"
                          onchange="updateExperience(${idx}, 'company', this.value); updatePreview();"
-                         placeholder="مثال: شركة التقنية">
+                         placeholder="شركة التقنية المتقدمة">
                 </div>
                 <div class="form-group">
                   <label>${t('startDate')}</label>
@@ -3632,8 +3821,8 @@
                 <div class="form-group">
                   <label>${t('endDate')}</label>
                   <input type="month" value="${exp.endDate}"
-                         onchange="updateExperience(${idx}, 'endDate', this.value); updatePreview();">
-                  <div class="form-hint">اتركه فارغاً إذا كنت تعمل حالياً</div>
+                         onchange="updateExperience(${idx}, 'endDate', this.value); updatePreview();"
+                         placeholder="الحالي">
                 </div>
                 <div class="form-group">
                   <label>${t('description')}</label>
@@ -3660,19 +3849,19 @@
                   <label>${t('degree')} *</label>
                   <input type="text" value="${edu.degree}"
                          onchange="updateEducation(${idx}, 'degree', this.value); updatePreview();"
-                         placeholder="مثال: بكالوريوس">
+                         placeholder="بكالوريوس">
                 </div>
                 <div class="form-group">
                   <label>${t('field')} *</label>
                   <input type="text" value="${edu.field}"
                          onchange="updateEducation(${idx}, 'field', this.value); updatePreview();"
-                         placeholder="مثال: هندسة البرمجيات">
+                         placeholder="هندسة البرمجيات">
                 </div>
                 <div class="form-group">
                   <label>${t('institution')} *</label>
                   <input type="text" value="${edu.institution}"
                          onchange="updateEducation(${idx}, 'institution', this.value); updatePreview();"
-                         placeholder="مثال: جامعة الملك سعود">
+                         placeholder="جامعة الملك سعود">
                 </div>
                 <div class="form-group">
                   <label>${t('graduationDate')}</label>
@@ -3698,7 +3887,7 @@
                 <div class="flex-between">
                   <input type="text" value="${skill}" style="flex: 1;"
                          onchange="updateSkill(${idx}, this.value); updatePreview();"
-                         placeholder="مثال: JavaScript">
+                         placeholder="JavaScript">
                   <button class="btn btn-outline btn-small" onclick="removeSkill(${idx}); updatePreview();" style="margin-right: 0.5rem;">
                     <i class="fas fa-times"></i>
                   </button>
@@ -3720,13 +3909,13 @@
                   <label>${t('certificateName')} *</label>
                   <input type="text" value="${cert.certificateName}"
                          onchange="updateCertification(${idx}, 'certificateName', this.value); updatePreview();"
-                         placeholder="مثال: AWS Certified">
+                         placeholder="AWS Certified Solutions Architect">
                 </div>
                 <div class="form-group">
                   <label>${t('issuer')} *</label>
                   <input type="text" value="${cert.issuer}"
                          onchange="updateCertification(${idx}, 'issuer', this.value); updatePreview();"
-                         placeholder="مثال: Amazon Web Services">
+                         placeholder="Amazon Web Services">
                 </div>
                 <div class="form-group">
                   <label>${t('issueDate')}</label>
@@ -3753,7 +3942,7 @@
                   <label>${t('projectName')} *</label>
                   <input type="text" value="${proj.projectName}"
                          onchange="updateProject(${idx}, 'projectName', this.value); updatePreview();"
-                         placeholder="مثال: تطبيق إدارة المهام">
+                         placeholder="تطبيق إدارة المشاريع">
                 </div>
                 <div class="form-group">
                   <label>${t('projectLink')}</label>
@@ -3878,177 +4067,63 @@
       saveToLocalStorage();
     }
 
-    // ============ تحديث المعاينة مع دعم ATS محسّن ============
-
     function updatePreview() {
       const previewSection = document.getElementById('preview-section');
       if (!previewSection) return;
 
       const data = AppState.resumeData;
+      const template = AppState.currentTemplate;
       const atsSystem = ATSSystems[AppState.selectedATS];
+
+      // إضافة كلاس القالب
+      previewSection.className = `resume-template ${template}`;
+
+      // تحديد الألوان حسب القالب
+      let textColor = '#1F2937';
+      let secondaryColor = '#4B5563';
+      let accentColor = '#0B3D91';
       
-      // إضافة كلاس النظام ATS
-      previewSection.className = `resume-container ${atsSystem.cssClass}`;
-
-      // تنسيق التاريخ حسب النظام
-      function formatDate(dateStr) {
-        if (!dateStr || dateStr === 'الحالي') return dateStr;
-        
-        const [year, month] = dateStr.split('-');
-        const monthNames = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
-                           'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
-        
-        switch(atsSystem.dateFormat) {
-          case 'MM/YYYY':
-            return `${month}/${year}`;
-          case 'Month YYYY':
-            return `${monthNames[parseInt(month) - 1]} ${year}`;
-          default:
-            return `${year}-${month}`;
-        }
+      if (template === 'creative') {
+        textColor = '#ffffff';
+        secondaryColor = 'rgba(255, 255, 255, 0.9)';
+        accentColor = '#ffffff';
+      } else if (template === 'executive') {
+        textColor = '#e0e0e0';
+        secondaryColor = '#b0b0b0';
+        accentColor = '#c99a6b';
       }
 
-      // بناء معلومات الاتصال حسب التخطيط
-      const contactItems = [];
-      if (data.personalInfo.email) {
-        contactItems.push(`<div class="contact-item">📧 ${escapeHTML(data.personalInfo.email)}</div>`);
-      }
-      if (data.personalInfo.phone) {
-        contactItems.push(`<div class="contact-item">☎️ ${escapeHTML(data.personalInfo.phone)}</div>`);
-      }
-      if (data.personalInfo.location) {
-        contactItems.push(`<div class="contact-item">📍 ${escapeHTML(data.personalInfo.location)}</div>`);
-      }
-      if (data.personalInfo.website) {
-        contactItems.push(`<div class="contact-item">🌐 ${escapeHTML(data.personalInfo.website)}</div>`);
-      }
+      // بناء HTML للسيرة الذاتية حسب القالب
+      let resumeHTML = '';
 
-      // فرع خاص للنظام ثنائي اللغة: يعرض عمود عربي وعمود إنجليزي جنبًا إلى جنب
-      if (atsSystem.cssClass === 'resume-bilingual') {
-        function formatDateEn(dateStr) {
-          if (!dateStr || dateStr === 'الحالي') return dateStr;
-          const [year, month] = dateStr.split('-');
-          const monthNamesEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-          return `${monthNamesEn[parseInt(month) - 1]} ${year}`;
-        }
-
-        const arabicContact = contactItems.join('');
-
-        const arabicHtml = `
+      if (template === 'ats-simple') {
+        // قالب ATS بسيط - نصي بحت
+        resumeHTML = `
           <div class="resume-header">
             <div class="resume-name">${escapeHTML(data.personalInfo.fullName) || 'الاسم الكامل'}</div>
             <div class="resume-contact">
-              ${arabicContact}
+              ${data.personalInfo.email ? `<div class="contact-item">${escapeHTML(data.personalInfo.email)}</div>` : ''}
+              ${data.personalInfo.phone ? `<div class="contact-item">${escapeHTML(data.personalInfo.phone)}</div>` : ''}
+              ${data.personalInfo.location ? `<div class="contact-item">${escapeHTML(data.personalInfo.location)}</div>` : ''}
+              ${data.personalInfo.website ? `<div class="contact-item">${escapeHTML(data.personalInfo.website)}</div>` : ''}
             </div>
           </div>
 
           ${data.personalInfo.summary ? `
             <div class="resume-section">
-              <div class="resume-section-title">${t('summary')}</div>
+              <div class="resume-section-title">PROFESSIONAL SUMMARY</div>
               <div class="resume-entry-description">${escapeHTML(data.personalInfo.summary)}</div>
             </div>
           ` : ''}
 
           ${data.experience.length > 0 ? `
             <div class="resume-section">
-              <div class="resume-section-title">${t('experience')}</div>
-              ${data.experience.map(exp => `
-                <div class="resume-entry">
-                  <div class="resume-entry-header">
-                    <div class="resume-entry-title">${escapeHTML(exp.jobTitle) || 'المسمى الوظيفي'}</div>
-                    <div class="resume-entry-date">${formatDate(exp.startDate)} - ${exp.endDate ? formatDate(exp.endDate) : 'حالياً'}</div>
-                  </div>
-                  <div class="resume-entry-subtitle">${escapeHTML(exp.company) || 'الشركة'}</div>
-                  ${exp.description ? `<div class="resume-entry-description">${escapeHTML(exp.description)}</div>` : ''}
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-
-          ${data.education.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title">${t('education')}</div>
-              ${data.education.map(edu => `
-                <div class="resume-entry">
-                  <div class="resume-entry-header">
-                    <div class="resume-entry-title">${escapeHTML(edu.degree)} في ${escapeHTML(edu.field)}</div>
-                    <div class="resume-entry-date">${formatDate(edu.graduationDate)}</div>
-                  </div>
-                  <div class="resume-entry-subtitle">${escapeHTML(edu.institution)}</div>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-
-          ${data.skills.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title">${t('skills')}</div>
-              <div class="resume-skills">
-                ${data.skills.filter(skill => skill.trim()).map(skill => `
-                  <span class="skill-tag">${escapeHTML(skill)}</span>
-                `).join('')}
-              </div>
-            </div>
-          ` : ''}
-
-          ${data.certifications.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title">${t('certifications')}</div>
-              ${data.certifications.map(cert => `
-                <div class="resume-entry">
-                  <div class="resume-entry-header">
-                    <div class="resume-entry-title">${escapeHTML(cert.certificateName)}</div>
-                    <div class="resume-entry-date">${formatDate(cert.issueDate)}</div>
-                  </div>
-                  <div class="resume-entry-subtitle">${escapeHTML(cert.issuer)}</div>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-
-          ${data.projects.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title">${t('projects')}</div>
-              ${data.projects.map(proj => `
-                <div class="resume-entry">
-                  <div class="resume-entry-title">${escapeHTML(proj.projectName)}</div>
-                  ${proj.projectLink ? `<div class="resume-entry-subtitle">🔗 ${escapeHTML(proj.projectLink)}</div>` : ''}
-                  ${proj.description ? `<div class="resume-entry-description">${escapeHTML(proj.description)}</div>` : ''}
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-        `;
-
-        const englishContact = [];
-        if (data.personalInfo.email) englishContact.push(`<div class="contact-item">📧 ${escapeHTML(data.personalInfo.email)}</div>`);
-        if (data.personalInfo.phone) englishContact.push(`<div class="contact-item">☎️ ${escapeHTML(data.personalInfo.phone)}</div>`);
-        if (data.personalInfo.location) englishContact.push(`<div class="contact-item">📍 ${escapeHTML(data.personalInfo.location)}</div>`);
-        if (data.personalInfo.website) englishContact.push(`<div class="contact-item">🌐 ${escapeHTML(data.personalInfo.website)}</div>`);
-
-        const englishHtml = `
-          <div class="resume-header">
-            <div class="resume-name">${escapeHTML(data.personalInfo.fullName) || 'Full Name'}</div>
-            <div class="resume-contact">
-              ${englishContact.join('')}
-            </div>
-          </div>
-
-          ${data.personalInfo.summary ? `
-            <div class="resume-section">
-              <div class="resume-section-title">Summary</div>
-              <div class="resume-entry-description">${escapeHTML(data.personalInfo.summary)}</div>
-            </div>
-          ` : ''}
-
-          ${data.experience.length > 0 ? `
-            <div class="resume-section">
-              <div class="resume-section-title">Experience</div>
+              <div class="resume-section-title">PROFESSIONAL EXPERIENCE</div>
               ${data.experience.map(exp => `
                 <div class="resume-entry">
                   <div class="resume-entry-header">
                     <div class="resume-entry-title">${escapeHTML(exp.jobTitle) || 'Job Title'}</div>
-                    <div class="resume-entry-date">${formatDateEn(exp.startDate)} - ${exp.endDate ? formatDateEn(exp.endDate) : 'Present'}</div>
+                    <div class="resume-entry-date">${exp.startDate || 'Start Date'} - ${exp.endDate || 'Present'}</div>
                   </div>
                   <div class="resume-entry-subtitle">${escapeHTML(exp.company) || 'Company'}</div>
                   ${exp.description ? `<div class="resume-entry-description">${escapeHTML(exp.description)}</div>` : ''}
@@ -4059,12 +4134,12 @@
 
           ${data.education.length > 0 ? `
             <div class="resume-section">
-              <div class="resume-section-title">Education</div>
+              <div class="resume-section-title">EDUCATION</div>
               ${data.education.map(edu => `
                 <div class="resume-entry">
                   <div class="resume-entry-header">
                     <div class="resume-entry-title">${escapeHTML(edu.degree)} in ${escapeHTML(edu.field)}</div>
-                    <div class="resume-entry-date">${formatDateEn(edu.graduationDate)}</div>
+                    <div class="resume-entry-date">${edu.graduationDate || 'Graduation Date'}</div>
                   </div>
                   <div class="resume-entry-subtitle">${escapeHTML(edu.institution)}</div>
                 </div>
@@ -4074,23 +4149,19 @@
 
           ${data.skills.length > 0 ? `
             <div class="resume-section">
-              <div class="resume-section-title">Skills</div>
-              <div class="resume-skills">
-                ${data.skills.filter(skill => skill.trim()).map(skill => `
-                  <span class="skill-tag">${escapeHTML(skill)}</span>
-                `).join('')}
-              </div>
+              <div class="resume-section-title">SKILLS</div>
+              <div class="resume-entry-description">${data.skills.filter(s => s).join(', ')}</div>
             </div>
           ` : ''}
 
           ${data.certifications.length > 0 ? `
             <div class="resume-section">
-              <div class="resume-section-title">Certifications</div>
+              <div class="resume-section-title">CERTIFICATIONS</div>
               ${data.certifications.map(cert => `
                 <div class="resume-entry">
                   <div class="resume-entry-header">
                     <div class="resume-entry-title">${escapeHTML(cert.certificateName)}</div>
-                    <div class="resume-entry-date">${formatDateEn(cert.issueDate)}</div>
+                    <div class="resume-entry-date">${cert.issueDate || 'Issue Date'}</div>
                   </div>
                   <div class="resume-entry-subtitle">${escapeHTML(cert.issuer)}</div>
                 </div>
@@ -4100,174 +4171,138 @@
 
           ${data.projects.length > 0 ? `
             <div class="resume-section">
-              <div class="resume-section-title">Projects</div>
+              <div class="resume-section-title">PROJECTS</div>
               ${data.projects.map(proj => `
                 <div class="resume-entry">
                   <div class="resume-entry-title">${escapeHTML(proj.projectName)}</div>
-                  ${proj.projectLink ? `<div class="resume-entry-subtitle">🔗 ${escapeHTML(proj.projectLink)}</div>` : ''}
+                  ${proj.projectLink ? `<div class="resume-entry-subtitle">${escapeHTML(proj.projectLink)}</div>` : ''}
                   ${proj.description ? `<div class="resume-entry-description">${escapeHTML(proj.description)}</div>` : ''}
                 </div>
               `).join('')}
             </div>
           ` : ''}
         `;
-
-        previewSection.innerHTML = `
-          <div class="bilingual-layout">
-            <div class="bilingual-column arabic">${arabicHtml}</div>
-            <div class="bilingual-column english">${englishHtml}</div>
-          </div>
-        `;
-
-        return;
-      }
-          <div class="resume-contact">
-            ${contactItems.join('')}
-          </div>
-        </div>
-
-        ${data.personalInfo.summary ? `
-          <div class="resume-section">
-            <div class="resume-section-title">${t('summary')}</div>
-            <div class="resume-entry-description">${escapeHTML(data.personalInfo.summary)}</div>
-          </div>
-        ` : ''}
-
-        ${data.experience.length > 0 ? `
-          <div class="resume-section">
-            <div class="resume-section-title">${t('experience')}</div>
-            ${data.experience.map(exp => `
-              <div class="resume-entry">
-                <div class="resume-entry-header">
-                  <div class="resume-entry-title">${escapeHTML(exp.jobTitle) || 'المسمى الوظيفي'}</div>
-                  <div class="resume-entry-date">${formatDate(exp.startDate)} - ${exp.endDate ? formatDate(exp.endDate) : 'حالياً'}</div>
-                </div>
-                <div class="resume-entry-subtitle">${escapeHTML(exp.company) || 'الشركة'}</div>
-                ${exp.description ? `<div class="resume-entry-description">${escapeHTML(exp.description)}</div>` : ''}
-              </div>
-            `).join('')}
-          </div>
-        ` : ''}
-
-        ${data.education.length > 0 ? `
-          <div class="resume-section">
-            <div class="resume-section-title">${t('education')}</div>
-            ${data.education.map(edu => `
-              <div class="resume-entry">
-                <div class="resume-entry-header">
-                  <div class="resume-entry-title">${escapeHTML(edu.degree)} في ${escapeHTML(edu.field)}</div>
-                  <div class="resume-entry-date">${formatDate(edu.graduationDate)}</div>
-                </div>
-                <div class="resume-entry-subtitle">${escapeHTML(edu.institution)}</div>
-              </div>
-            `).join('')}
-          </div>
-        ` : ''}
-
-        ${data.skills.length > 0 ? `
-          <div class="resume-section">
-            <div class="resume-section-title">${t('skills')}</div>
-            <div class="resume-skills">
-              ${data.skills.filter(skill => skill.trim()).map(skill => `
-                <span class="skill-tag">${escapeHTML(skill)}</span>
-              `).join('')}
+      } else {
+        // القوالب الأخرى
+        resumeHTML = `
+          <div class="resume-header">
+            <div class="resume-name">${escapeHTML(data.personalInfo.fullName) || 'الاسم الكامل'}</div>
+            <div class="resume-contact">
+              ${data.personalInfo.email ? `<div class="contact-item">📧 ${escapeHTML(data.personalInfo.email)}</div>` : ''}
+              ${data.personalInfo.phone ? `<div class="contact-item">📱 ${escapeHTML(data.personalInfo.phone)}</div>` : ''}
+              ${data.personalInfo.location ? `<div class="contact-item">📍 ${escapeHTML(data.personalInfo.location)}</div>` : ''}
+              ${data.personalInfo.website ? `<div class="contact-item">🌐 ${escapeHTML(data.personalInfo.website)}</div>` : ''}
             </div>
           </div>
-        ` : ''}
 
-        ${data.certifications.length > 0 ? `
-          <div class="resume-section">
-            <div class="resume-section-title">${t('certifications')}</div>
-            ${data.certifications.map(cert => `
-              <div class="resume-entry">
-                <div class="resume-entry-header">
-                  <div class="resume-entry-title">${escapeHTML(cert.certificateName)}</div>
-                  <div class="resume-entry-date">${formatDate(cert.issueDate)}</div>
+          ${data.personalInfo.summary ? `
+            <div class="resume-section">
+              <div class="resume-section-title">${t('summary')}</div>
+              <div class="resume-entry-description" style="color: ${secondaryColor}">${escapeHTML(data.personalInfo.summary)}</div>
+            </div>
+          ` : ''}
+
+          ${data.experience.length > 0 ? `
+            <div class="resume-section">
+              <div class="resume-section-title" style="color: ${accentColor}">${t('experience')}</div>
+              ${data.experience.map(exp => `
+                <div class="resume-entry">
+                  <div class="resume-entry-header">
+                    <div class="resume-entry-title" style="color: ${textColor}">${escapeHTML(exp.jobTitle) || 'المسمى الوظيفي'}</div>
+                    <div class="resume-entry-date" style="color: ${accentColor}">${exp.startDate || 'التاريخ'} - ${exp.endDate || 'حالياً'}</div>
+                  </div>
+                  <div class="resume-entry-subtitle" style="color: ${secondaryColor}">${escapeHTML(exp.company) || 'الشركة'}</div>
+                  ${exp.description ? `<div class="resume-entry-description" style="color: ${secondaryColor}">${escapeHTML(exp.description)}</div>` : ''}
                 </div>
-                <div class="resume-entry-subtitle">${escapeHTML(cert.issuer)}</div>
-              </div>
-            `).join('')}
-          </div>
-        ` : ''}
+              `).join('')}
+            </div>
+          ` : ''}
 
-        ${data.projects.length > 0 ? `
-          <div class="resume-section">
-            <div class="resume-section-title">${t('projects')}</div>
-            ${data.projects.map(proj => `
-              <div class="resume-entry">
-                <div class="resume-entry-title">${escapeHTML(proj.projectName)}</div>
-                ${proj.projectLink ? `<div class="resume-entry-subtitle">🔗 ${escapeHTML(proj.projectLink)}</div>` : ''}
-                ${proj.description ? `<div class="resume-entry-description">${escapeHTML(proj.description)}</div>` : ''}
+          ${data.education.length > 0 ? `
+            <div class="resume-section">
+              <div class="resume-section-title" style="color: ${accentColor}">${t('education')}</div>
+              ${data.education.map(edu => `
+                <div class="resume-entry">
+                  <div class="resume-entry-header">
+                    <div class="resume-entry-title" style="color: ${textColor}">${escapeHTML(edu.degree) || 'الدرجة'} في ${escapeHTML(edu.field) || 'التخصص'}</div>
+                    <div class="resume-entry-date" style="color: ${accentColor}">${edu.graduationDate || 'التاريخ'}</div>
+                  </div>
+                  <div class="resume-entry-subtitle" style="color: ${secondaryColor}">${escapeHTML(edu.institution) || 'المؤسسة'}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+
+          ${data.skills.length > 0 ? `
+            <div class="resume-section">
+              <div class="resume-section-title" style="color: ${accentColor}">${t('skills')}</div>
+              <div class="resume-skills">
+                ${data.skills.filter(s => s).map(skill => `
+                  <span class="skill-tag" style="color: ${textColor}">${escapeHTML(skill)}</span>
+                `).join('')}
               </div>
-            `).join('')}
-          </div>
-        ` : ''}
-      `;
+            </div>
+          ` : ''}
+
+          ${data.certifications.length > 0 ? `
+            <div class="resume-section">
+              <div class="resume-section-title" style="color: ${accentColor}">${t('certifications')}</div>
+              ${data.certifications.map(cert => `
+                <div class="resume-entry">
+                  <div class="resume-entry-header">
+                    <div class="resume-entry-title" style="color: ${textColor}">${escapeHTML(cert.certificateName) || 'الشهادة'}</div>
+                    <div class="resume-entry-date" style="color: ${accentColor}">${cert.issueDate || 'التاريخ'}</div>
+                  </div>
+                  <div class="resume-entry-subtitle" style="color: ${secondaryColor}">${escapeHTML(cert.issuer) || 'الجهة'}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+
+          ${data.projects.length > 0 ? `
+            <div class="resume-section">
+              <div class="resume-section-title" style="color: ${accentColor}">${t('projects')}</div>
+              ${data.projects.map(proj => `
+                <div class="resume-entry">
+                  <div class="resume-entry-title" style="color: ${textColor}">${escapeHTML(proj.projectName) || 'المشروع'}</div>
+                  ${proj.projectLink ? `<div class="resume-entry-subtitle" style="color: ${secondaryColor}">🔗 ${escapeHTML(proj.projectLink)}</div>` : ''}
+                  ${proj.description ? `<div class="resume-entry-description" style="color: ${secondaryColor}">${escapeHTML(proj.description)}</div>` : ''}
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+        `;
+      }
+
+      previewSection.innerHTML = resumeHTML;
     }
 
     function togglePreviewMode(mode) {
       const previewSection = document.getElementById('preview-section');
       if (mode === 'text') {
-        const text = generateTextResume();
+        const text = previewSection.innerText;
         previewSection.innerHTML = `<div class="resume-text-view">${text}</div>`;
       } else {
         updatePreview();
       }
     }
 
-    function generateTextResume() {
-      const data = AppState.resumeData;
-      let text = '';
-      
-      // الاسم
-      text += data.personalInfo.fullName + '\n\n';
-      
-      // معلومات الاتصال
-      const contact = [];
-      if (data.personalInfo.email) contact.push(`Email: ${data.personalInfo.email}`);
-      if (data.personalInfo.phone) contact.push(`Phone: ${data.personalInfo.phone}`);
-      if (data.personalInfo.location) contact.push(`Location: ${data.personalInfo.location}`);
-      if (data.personalInfo.website) contact.push(`Website: ${data.personalInfo.website}`);
-      text += contact.join(' | ') + '\n\n';
-      
-      // الملخص
-      if (data.personalInfo.summary) {
-        text += 'SUMMARY\n' + '='.repeat(20) + '\n';
-        text += data.personalInfo.summary + '\n\n';
-      }
-      
-      // الخبرة
-      if (data.experience.length > 0) {
-        text += 'EXPERIENCE\n' + '='.repeat(20) + '\n';
-        data.experience.forEach(exp => {
-          text += `${exp.jobTitle} - ${exp.company}\n`;
-          text += `${exp.startDate} - ${exp.endDate || 'Present'}\n`;
-          if (exp.description) text += exp.description + '\n';
-          text += '\n';
-        });
-      }
-      
-      // التعليم
-      if (data.education.length > 0) {
-        text += 'EDUCATION\n' + '='.repeat(20) + '\n';
-        data.education.forEach(edu => {
-          text += `${edu.degree} in ${edu.field}\n`;
-          text += `${edu.institution} - ${edu.graduationDate}\n\n`;
-        });
-      }
-      
-      // المهارات
-      if (data.skills.length > 0) {
-        text += 'SKILLS\n' + '='.repeat(20) + '\n';
-        text += data.skills.filter(s => s.trim()).join(', ') + '\n\n';
-      }
-      
-      return text;
-    }
-
     function selectTemplate(templateKey) {
       AppState.currentTemplate = templateKey;
+      
+      // التحقق من توافق القالب مع نظام ATS المختار
+      const atsSystem = ATSSystems[AppState.selectedATS];
+      const template = ResumeTemplates[templateKey];
+      
+      if (template.compatibility === 'low' && atsSystem.compatibility !== 'high') {
+        showNotification('هذا القالب غير متوافق مع نظام ATS المختار. نوصي باستخدام قالب آخر.', 'warning');
+      }
+      
       saveToLocalStorage();
+      
+      if (AppState.currentPage === 'builder') {
+        updatePreview();
+      }
     }
 
     function toggleLanguage() {
@@ -4315,7 +4350,6 @@
         reader.onload = (e) => {
           AppState.resumeData.photo = e.target.result;
           saveToLocalStorage();
-          updatePreview();
         };
         reader.readAsDataURL(file);
       }
@@ -4376,49 +4410,32 @@
       }
     }
 
-    function updateMobileMenu() {
-      const menuContent = document.querySelector('.mobile-menu-content');
-      if (menuContent) {
-        menuContent.innerHTML = `
-          <a href="#" onclick="navigateTo('home'); closeMobileMenu();" class="nav-link">
-            <i class="fas fa-home"></i> ${t('home')}
-          </a>
-          <a href="#" onclick="navigateTo('builder'); closeMobileMenu();" class="nav-link">
-            <i class="fas fa-edit"></i> ${t('builder')}
-          </a>
-          <a href="#" onclick="navigateTo('templates'); closeMobileMenu();" class="nav-link">
-            <i class="fas fa-file-alt"></i> ${t('templates')}
-          </a>
-          <a href="#" onclick="navigateTo('contact'); closeMobileMenu();" class="nav-link">
-            <i class="fas fa-envelope"></i> ${t('contact')}
-          </a>
-          ${AppState.userAuth.isLoggedIn ? `
-            <a href="#" onclick="navigateTo('dashboard'); closeMobileMenu();" class="nav-link">
-              <i class="fas fa-tachometer-alt"></i> ${t('dashboard')}
-            </a>
-            <button class="btn btn-outline" onclick="logout(); closeMobileMenu();">
-              <i class="fas fa-sign-out-alt"></i> ${t('logout')}
-            </button>
-          ` : `
-            <button class="btn btn-primary" onclick="navigateTo('auth'); closeMobileMenu();">
-              <i class="fas fa-sign-in-alt"></i> ${t('login')}
-            </button>
-          `}
-          <button class="lang-toggle" onclick="toggleLanguage(); closeMobileMenu();">
-            <i class="fas fa-globe"></i> ${AppState.currentLanguage === 'ar' ? 'EN' : 'AR'}
-          </button>
-        `;
-      }
-    }
-
     function attachEventListeners() {
       const atsSelect = document.getElementById('ats-select');
       if (atsSelect) {
         atsSelect.addEventListener('change', (e) => {
           AppState.selectedATS = e.target.value;
-          saveToLocalStorage();
+          
+          // اقتراح أفضل قالب لنظام ATS المختار
+          const atsSystem = ATSSystems[AppState.selectedATS];
+          if (atsSystem.bestTemplate && AppState.currentTemplate !== atsSystem.bestTemplate) {
+            AppState.currentTemplate = atsSystem.bestTemplate;
+            const templateSelect = document.getElementById('template-select');
+            if (templateSelect) {
+              templateSelect.value = atsSystem.bestTemplate;
+            }
+            showNotification(`تم اختيار القالب الأنسب لنظام ${atsSystem.name}`, 'info');
+          }
+          
+          renderPage();
+        });
+      }
+
+      const templateSelect = document.getElementById('template-select');
+      if (templateSelect) {
+        templateSelect.addEventListener('change', (e) => {
+          selectTemplate(e.target.value);
           updatePreview();
-          showNotification(`تم تغيير نظام التوظيف إلى ${ATSSystems[e.target.value].name}`, 'success');
         });
       }
     }
@@ -4427,8 +4444,7 @@
       renderPage();
     }
 
-    // ============ تصدير PDF محسّن ============
-
+    // تصدير السيرة إلى PDF مع إصلاح شامل
     function exportPDF() {
       const preview = document.getElementById('preview-section');
       if (!preview) {
@@ -4443,11 +4459,11 @@
       showLoadingIndicator(true);
 
       const filename = (AppState.resumeData.personalInfo.fullName || 'cv') + '.pdf';
-      const atsSystem = ATSSystems[AppState.selectedATS];
+      const template = AppState.currentTemplate;
       
-      // إعدادات محسّنة للتصدير حسب نظام ATS
-      const opt = {
-        margin: atsSystem.name === 'Workday' || atsSystem.name === 'Oracle/Taleo' ? 5 : 10,
+      // إعدادات مختلفة حسب القالب
+      let opt = {
+        margin: template === 'ats-simple' ? 5 : 10,
         filename: filename,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
@@ -4518,12 +4534,12 @@
       // عرض الصفحة الرئيسية
       renderPage();
       
-      // تحديث المعاينة الأولية
-      setTimeout(() => {
-        if (AppState.currentPage === 'builder') {
-          updatePreview();
-        }
-      }, 500);
+      // عرض القسم الأول تلقائياً في صفحة الباني
+      if (AppState.currentPage === 'builder') {
+        setTimeout(() => {
+          switchSection('personal');
+        }, 500);
+      }
     }
 
     // تشغيل التطبيق عند تحميل الصفحة
@@ -4540,11 +4556,10 @@
       }
     });
 
-    // الحفظ التلقائي كل 30 ثانية
+    // حفظ تلقائي كل 30 ثانية
     setInterval(() => {
       if (AppState.currentPage === 'builder') {
         saveToLocalStorage();
-        console.log('Auto-saved');
       }
     }, 30000);
   </script>
